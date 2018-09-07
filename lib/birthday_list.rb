@@ -21,15 +21,15 @@ class BirthdayList
   def birthday_search
     @list.each do |hash|
   #    binding.pry
-      return yay_a_birthday if today_is_someones_birthday
+      return yay_a_birthday(hash) if today_is_someones_birthday(hash)
     end
   end
 
-  def yay_a_birthday
+  def yay_a_birthday(hash)
     "It's #{hash[:name]}'s birthday today! They are #{Date.today.strftime("%Y").to_i - hash[:date].strftime("%Y").to_i} years old!"
   end
 
-  def today_is_someones_birthday
+  def today_is_someones_birthday(hash)
     Date.today.strftime("%d/%m") == hash[:date].strftime("%d/%m")
   end
 
