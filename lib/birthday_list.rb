@@ -7,7 +7,7 @@ class BirthdayList
 
   def add_birthday(name, input_date)
     date = Date.strptime(input_date, "%d-%m-%y")
-    @list << {name: name, date: date}
+    @list << { name: name, date: date }
   end
 
   def print_list
@@ -18,16 +18,19 @@ class BirthdayList
     string
   end
 
-  def birthday_search(input_date)
+  def birthday_search
     @list.each do |hash|
   #    binding.pry
-      if Date.today.strftime("%d/%m") == hash[:date].strftime("%d/%m")
-#      if Date.strptime(input_date, "%d-%m-%y") == hash[:date] then
-        return "It's #{hash[:name]}'s birthday today! They are #{Date.today.strftime("%Y").to_i - hash[:date].strftime("%Y").to_i} years old!"
-      else
-        return
-      end
+      return yay_a_birthday if today_is_someones_birthday
     end
+  end
+
+  def yay_a_birthday
+    "It's #{hash[:name]}'s birthday today! They are #{Date.today.strftime("%Y").to_i - hash[:date].strftime("%Y").to_i} years old!"
+  end
+
+  def today_is_someones_birthday
+    Date.today.strftime("%d/%m") == hash[:date].strftime("%d/%m")
   end
 
 end
