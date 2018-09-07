@@ -11,10 +11,11 @@ class BirthdayList
 
   def print_list
     string = ""
-    @list.each do |name|
-      string += "#{name}\n"
+    @list.each do |hash|
+      string += "#{hash[:name]}: #{hash[:date]}\n"
     end
     string
   end
+  
 
 end
