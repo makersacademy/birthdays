@@ -23,6 +23,7 @@ class BirthdayList
   #    binding.pry
       return yay_a_birthday(hash) if today_is_someones_birthday(hash)
     end
+    return nil
   end
 
   def yay_a_birthday(hash)
