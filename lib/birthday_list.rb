@@ -5,8 +5,8 @@ class BirthdayList
     @list = []
   end
 
-  def add_birthday(name)
-    @list << name
+  def add_birthday(name, date)
+    @list << {name: name, date: date}
   end
 
   def print_list
