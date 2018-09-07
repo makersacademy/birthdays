@@ -26,11 +26,15 @@ class BirthdayList
   end
 
   def yay_a_birthday(hash)
-    "It's #{hash[:name]}'s birthday today! They are #{Date.today.strftime("%Y").to_i - hash[:date].strftime("%Y").to_i} years old!"
+    "It's #{hash[:name]}'s birthday today! They are #{age_calculator(hash)} years old!"
   end
 
   def today_is_someones_birthday(hash)
     Date.today.strftime("%d/%m") == hash[:date].strftime("%d/%m")
+  end
+
+  def age_calculator(hash)
+    Date.today.strftime("%Y").to_i - hash[:date].strftime("%Y").to_i
   end
 
 end
