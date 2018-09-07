@@ -23,4 +23,10 @@ describe BirthdayList do
     expect(subject.birthday_search("03/03/03")).to eq("It's James's birthday today!")
   end
 
+  it "#birthday_search should return nothing if there is no birthday on search date" do
+    subject.add_birthday("James", "03-03-03")
+    subject.add_birthday("Tom", "05-05-05")
+    expect(subject.birthday_search("03-04-03")).to be_nil
+  end
+
 end
