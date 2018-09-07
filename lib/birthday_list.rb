@@ -16,6 +16,15 @@ class BirthdayList
     end
     string
   end
-  
+
+  def birthday_search(input_date)
+    @list.each do |hash|
+      if input_date == hash[:date] then
+        return "It's #{hash[:name]}'s birthday today!"
+      else
+        return
+      end
+    end
+  end
 
 end
