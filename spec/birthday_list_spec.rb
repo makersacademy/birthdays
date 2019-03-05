@@ -4,6 +4,10 @@ describe "The add_birthday method" do
   it "gives a message when birthday added" do
     expect(add_birthday("Katie", "4th July")).to eq "Birthday added!"
   end
+
+  it "stores details when birthday is added" do
+    # expect
+  end
 end
 
 describe "The show_birthday method" do
