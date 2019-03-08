@@ -25,7 +25,9 @@ class Birthdays
     todays_birthdays = []
     @birthdays.each do |name, date|
       if today_date[0, 5] == date[0, 5]
-        todays_birthdays << "It's #{name}'s birthday today! They are #{(today_date[6, 4].to_i - date[6, 4].to_i).to_s} years old!"
+        todays_birthdays << "It's #{name}'s birthday today! "\
+        "They are #{(today_date[6, 4].to_i - date[6, 4].to_i)} "\
+        "years old!"
       end
     end
     todays_birthdays.join("\n")
