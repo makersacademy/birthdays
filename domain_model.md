@@ -20,6 +20,7 @@ Verbs: store, show_all, match_birthday
 | Birthdays | add_birthday   |
 |           | show_all       |
 |           | match_birthday |
+|           | age            |
 | Friend    |                |
 
 ###
@@ -29,3 +30,4 @@ User stories
 - As a user, I want to add my friend's birthday to a list
 - As a user, I want to be able to see all the birthdays I have stored in my list
 - As a user, I want to see if one of my friend's birthday is today
+- As a user, I want to know my friend's age
