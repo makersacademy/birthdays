@@ -16,4 +16,15 @@ RSpec.describe Birthdays do
     expect(subject.list).to include(friend)
   end
 
+  it "shows all the birthdays stored in the birthday list"
+
+
+  it "shows a matching birthday" 
+
+
+  context "can calculate the age of the matched person " do
+    it "calculates the age" do
+
+    end 
+  end
 end
