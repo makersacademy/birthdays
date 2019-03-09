@@ -5,4 +5,5 @@ RSpec.describe Birthdays do
   it { is_expected.to be_kind_of(Birthdays) }
   # test the methods
   it { is_expected.to respond_to(:add_birthday)}
+  it { is_expected.to respond_to(:show_all) }
 end
