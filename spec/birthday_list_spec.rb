@@ -4,7 +4,7 @@ RSpec.describe Birthdays do
 
   it { is_expected.to be_kind_of(Birthdays) }
   context 'responds to these methods' do
-    it { is_expected.to respond_to(:store) }
+    it { is_expected.to respond_to(:store).with(1) }
     it { is_expected.to respond_to(:view_all) }
     it { is_expected.to respond_to(:check_birthday) }
     it { is_expected.to respond_to(:age) }
