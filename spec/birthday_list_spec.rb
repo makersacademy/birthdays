@@ -7,7 +7,7 @@ RSpec.describe Birthdays do
     it { is_expected.to respond_to(:store).with(1) }
     it { is_expected.to respond_to(:view_all) }
     it { is_expected.to respond_to(:check_birthday) }
-    it { is_expected.to respond_to(:age) }
+    it { is_expected.to respond_to(:age).with(1) }
   end
 
   it "adds a friend's birthday to a list" do
@@ -50,7 +50,9 @@ RSpec.describe Birthdays do
 
   context "can calculate the age of the matched person " do
     it "calculates the age" do
-
+      friend = double(name: "John Adams", birthday: Time.new(2000,3,9))
+      subject.store(friend)
+      expect(subject.age(friend)).to eq 19
     end 
   end
 end

@@ -22,7 +22,8 @@ class Birthdays
     names
   end
 
-  def age
+  def age(friend)
+    Time.now.year - friend.birthday.year
   end
 
   def date_formatting(date)
