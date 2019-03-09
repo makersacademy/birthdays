@@ -39,6 +39,14 @@ RSpec.describe Birthdays do
     expect(subject.check_birthday.first).to eq friend1
   end
 
+  it "shows matching birthdays" do
+    friend1 = double(name: "John Adams", birthday: Time.new(1795,3,9))
+    friend2 = double(name: "John Adams", birthday: Time.new(1900,3,9))
+    subject.store(friend1)
+    subject.store(friend2)
+    expect(subject.check_birthday).to eq [friend1, friend2]
+  end
+
 
   context "can calculate the age of the matched person " do
     it "calculates the age" do
