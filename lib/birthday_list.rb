@@ -1,5 +1,12 @@
 class Birthdays
+  attr_reader :list
+
+  def initialize
+    @list = []
+  end
+
   def add_birthday(person)
+    @list << person
   end
 
   def show_all
