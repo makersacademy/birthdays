@@ -4,4 +4,7 @@ class Birthdays
 
   def show_all
   end
+
+  def match_birthday
+  end
 end
