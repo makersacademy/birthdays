@@ -5,14 +5,14 @@ class Birthdays
     @list = []
   end
 
-  def add_birthday(person)
+  def store(person)
     @list << person
   end
 
-  def show_all
+  def view_all
   end
 
-  def match_birthday
+  def check_birthday
   end
 
   def age
