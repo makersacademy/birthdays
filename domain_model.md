@@ -17,7 +17,7 @@ Verbs: store, show_all, match_birthday
 
 | Subject   | Action         |
 | --------- | -------------- |
-| Birthdays | list           |
+| Birthdays | add_birthday   |
 |           | show_all       |
 |           | match_birthday |
 | Friend    |                |
