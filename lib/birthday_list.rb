@@ -5,8 +5,8 @@ class Birthdays
     @list = []
   end
 
-  def store(person)
-    @list << person
+  def store(birthday)
+    @list << birthday
   end
 
   def view_all
@@ -22,8 +22,8 @@ class Birthdays
     names
   end
 
-  def age(friend)
-    Time.now.year - friend.birthday.year
+  def age(birthday)
+    Time.now.year - birthday.birthday.year
   end
 
   def date_formatting(date)

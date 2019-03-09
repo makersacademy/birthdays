@@ -10,10 +10,10 @@ RSpec.describe Birthdays do
     it { is_expected.to respond_to(:age).with(1) }
   end
 
-  it "adds a friend's birthday to a list" do
-    friend = double
-    subject.store(friend)
-    expect(subject.list).to include(friend)
+  it "adds a birthday to the birthday list" do
+    birthday = double
+    subject.store(birthday)
+    expect(subject.list).to include(birthday)
   end
 
   
@@ -23,35 +23,35 @@ RSpec.describe Birthdays do
     expect(mock_class.view_all).to eq("Name: John Adam | Birthday: 10 January 1795")
   end
 
-  it "shows all birthdays from the list in a nice format - #view_all implemented - mocked Friend class" do
-    friend1 = double(name: "John Adams", birthday: "10 January 1795")
-    friend2 = double(name: "May Day", birthday: "10 January 1795")
-    subject.store(friend1)
-    subject.store(friend2)
+  it "shows all birthdays from the list in a nice format - #view_all implemented - mocked birthday class" do
+    birthday1 = double(name: "John Adams", birthday: "10 January 1795")
+    birthday2 = double(name: "May Day", birthday: "10 January 1795")
+    subject.store(birthday1)
+    subject.store(birthday2)
    
     expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\nName: May Day | Birthday: 10 January 1795\n").to_stdout
   end
   
 
   it "shows a matching birthday" do
-    friend1 = double(name: "John Adams", birthday: Time.new(1795, 3, 9))
-    subject.store(friend1)
-    expect(subject.check_birthday.first).to eq friend1
+    birthday1 = double(name: "John Adams", birthday: Time.new(1795, 3, 9))
+    subject.store(birthday1)
+    expect(subject.check_birthday.first).to eq  birthday1
   end
 
   it "shows matching birthdays" do
-    friend1 = double(name: "John Adams", birthday: Time.new(1795, 3, 9))
-    friend2 = double(name: "John Adams", birthday: Time.new(1900, 3, 9))
-    subject.store(friend1)
-    subject.store(friend2)
-    expect(subject.check_birthday).to eq [friend1, friend2]
+    birthday1 = double(name: "John Adams", birthday: Time.new(1795, 3, 9))
+    birthday2 = double(name: "John Adams", birthday: Time.new(1900, 3, 9))
+    subject.store(birthday1)
+    subject.store(birthday2)
+    expect(subject.check_birthday).to eq [birthday1, birthday2]
   end
 
   context "can calculate the age of the matched person " do
     it "calculates the age" do
-      friend = double(name: "John Adams", birthday: Time.new(2000, 3, 9))
-      subject.store(friend)
-      expect(subject.age(friend)).to eq 19
+      birthday = double(name: "John Adams", birthday: Time.new(2000, 3, 9))
+      subject.store(birthday)
+      expect(subject.age(birthday)).to eq 19
     end 
   end
 end
