@@ -16,7 +16,11 @@ RSpec.describe Birthdays do
     expect(subject.list).to include(friend)
   end
 
-  it "shows all the birthdays stored in the birthday list"
+  it "shows all the birthdays stored in the birthday list" do
+    mock_class = instance_double(Birthdays)
+    allow(mock_class).to receive(:view_all).and_return("Name: John Adam | Birthday: 10 January 1795\n""Name: May Day | Birthday: 10 January 1895")
+    expect(mock_class.view_all).to eq( "Name: John Adam | Birthday: 10 January 1795\n""Name: May Day | Birthday: 10 January 1895")
+  end
 
 
   it "shows a matching birthday" 

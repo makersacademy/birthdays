@@ -27,16 +27,16 @@ Verbs: store, show_all, match_birthday
 
 User stories
 
-- As a user, I want to add my friend's birthday to a list
-- As a user, I want to be able to see all the birthdays I have stored in my list
-- As a user, I want to see if one of my friend's birthday is today
-- As a user, I want to know my friend's age
+- As a user, I want to store all of my friends birthdays in a list, so that I can keep track of them
+- As a user, I want to be able to view all names and corresponding birthdays in the list, so that I can have an overview of upcoming birthdays
+- As a user, I want to be able to check who's birthday is today, so that I can wish them a happy birthday
+- As a user, I want the list to tell me the age of my friends
 
-#### add_birthday method
+#### store method
 
 - takes a Friend object which has name: and birthday: as attributes
 - data will be stored in a hash
-  - key [string]: birthday_object of Time class
+  - key [string]: birrthday_object of Time class
   - value [string_in_array]: friend's name (first_name second_name)
 
 Example: { "10 January 1960" => "John Adams" }
@@ -49,11 +49,8 @@ Example 2: {
 - takes no arguments
 - iterates through each birthday and lists date and name as below
 
-Date: 10 January
-Name:
-
-1. John Adam - Age (50)
-2. May Day - Age (50)
+Name: John Adam | Birthday: 10 January 1795
+Name: May Day | Birthday: 10 January 1895
 
 #### match_birthday
 
