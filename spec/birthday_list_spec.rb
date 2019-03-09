@@ -33,7 +33,11 @@ RSpec.describe Birthdays do
   end
   
 
-  it "shows a matching birthday" 
+  it "shows a matching birthday" do
+    friend1 = double(name: "John Adams", birthday: Time.new(1795,3,9))
+    subject.store(friend1)
+    expect(subject.check_birthday.first).to eq friend1
+  end
 
 
   context "can calculate the age of the matched person " do

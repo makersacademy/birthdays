@@ -16,8 +16,17 @@ class Birthdays
   end
 
   def check_birthday
+    names = @list.select do |record|
+      date_formatting(record.birthday) == date_formatting(Time.now)
+    end
+    names
   end
 
   def age
   end
+
+  def date_formatting(date)
+    date.strftime("%d-%m")
+  end
+
 end
