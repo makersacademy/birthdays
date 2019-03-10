@@ -1,4 +1,5 @@
 require 'birthday_list'
+require 'birthday'
 
 RSpec.describe Birthdays do
 
@@ -11,16 +12,15 @@ RSpec.describe Birthdays do
   end
 
   it "adds a birthday to the birthday list" do
-    birthday = double
+    birthday = instance_double(Birthday)
     subject.store(birthday)
     expect(subject.list).to include(birthday)
   end
-
   
   it "shows returns the birthdays stored in the birthday list - #view_all not implemented yet" do
-    mock_class = instance_double(Birthdays)
-    allow(mock_class).to receive(:view_all).and_return("Name: John Adam | Birthday: 10 January 1795")
-    expect(mock_class.view_all).to eq("Name: John Adam | Birthday: 10 January 1795")
+    mock_birthday_list = instance_double(Birthdays)
+    allow(mock_birthday_list).to receive(:view_all).and_return("Name: John Adam | Birthday: 10 January 1795")
+    expect(mock_birthday_list.view_all).to eq("Name: John Adam | Birthday: 10 January 1795")
   end
 
   it "shows all birthdays from the list in a nice format - #view_all implemented - mocked birthday class" do
@@ -31,7 +31,6 @@ RSpec.describe Birthdays do
    
     expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\nName: May Day | Birthday: 10 January 1795\n").to_stdout
   end
-  
 
   it "shows a matching birthday" do
     m = Time.now.month
@@ -57,5 +56,13 @@ RSpec.describe Birthdays do
       subject.store(birthday)
       expect(subject.age(birthday)).to eq 19
     end 
+  end
+
+  context "tests method with real birthday class" do
+    it "adds birthday to the list" do
+      birthday = Birthday.new("John","Adams","17 January 2000")
+      subject.store(birthday)
+      expect(subject.list).to include(birthday)
+    end
   end
 end

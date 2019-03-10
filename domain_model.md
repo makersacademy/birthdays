@@ -73,3 +73,5 @@ Say nothing if no match.
 - returns his age
 
 ### Separate Birthday class
+
+- created a birthday object with name, second name and birthday
