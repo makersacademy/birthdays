@@ -34,14 +34,18 @@ RSpec.describe Birthdays do
   
 
   it "shows a matching birthday" do
-    birthday1 = double(name: "John Adams", birthday: Time.new(1795, 3, 9))
+    m = Time.now.month
+    d = Time.now.day
+    birthday1 = double(name: "John Adams", birthday: Time.new(1795, m, d))
     subject.store(birthday1)
-    expect(subject.check_birthday.first).to eq  birthday1
+    expect(subject.check_birthday.first).to eq birthday1
   end
 
   it "shows matching birthdays" do
-    birthday1 = double(name: "John Adams", birthday: Time.new(1795, 3, 9))
-    birthday2 = double(name: "John Adams", birthday: Time.new(1900, 3, 9))
+    m = Time.now.month
+    d = Time.now.day
+    birthday1 = double(name: "John Adams", birthday: Time.new(1795, m, d))
+    birthday2 = double(name: "John Adams", birthday: Time.new(1900, m, d))
     subject.store(birthday1)
     subject.store(birthday2)
     expect(subject.check_birthday).to eq [birthday1, birthday2]

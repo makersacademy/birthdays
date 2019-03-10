@@ -21,7 +21,7 @@ Verbs: store, show_all, match_birthday
 |           | show_all       |
 |           | match_birthday |
 |           | age            |
-| Friend    |                |
+| Birthday  |                |
 
 ###
 
@@ -70,3 +70,5 @@ Say nothing if no match.
 
 - takes one argument - bday of a matched person
 - returns his age
+
+### Separate Birthday class
