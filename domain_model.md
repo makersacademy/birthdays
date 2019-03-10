@@ -21,7 +21,8 @@ Verbs: store, show_all, match_birthday
 |           | show_all       |
 |           | match_birthday |
 |           | age            |
-| Birthday  |                |
+| Birthday  | name           |
+|           | birthday       |
 
 ###
 

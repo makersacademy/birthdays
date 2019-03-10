@@ -11,4 +11,9 @@ RSpec.describe Birthday do
     birthday = Birthday.new("John","Adams","17 May 2000")
     expect(birthday.name).to eq("#{birthday.first_name}  #{birthday.second_name}")
   end
+
+  it 'returns its birthday' do
+    birthday = Birthday.new("John","Adams","17 May 2000")
+    expect(birthday.birthday).to eq("#{birthday.birthday}")
+  end
 end

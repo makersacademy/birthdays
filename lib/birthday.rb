@@ -9,4 +9,5 @@ class Birthday
   def name
     "#{@first_name}  #{@second_name}"
   end
+
 end
