@@ -64,5 +64,12 @@ RSpec.describe Birthdays do
       subject.store(birthday)
       expect(subject.list).to include(birthday)
     end
+
+    it "shows all birthdays" do
+      birthday1 = Birthday.new("John", "Adams", "10 January 1795")
+      subject.store(birthday1)
+
+      expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\n").to_stdout
+    end
   end
 end

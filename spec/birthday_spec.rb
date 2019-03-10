@@ -9,7 +9,7 @@ RSpec.describe Birthday do
 
   it 'returns a full name' do
     birthday = Birthday.new("John","Adams","17 May 2000")
-    expect(birthday.name).to eq("#{birthday.first_name}  #{birthday.second_name}")
+    expect(birthday.name).to eq("#{birthday.first_name} #{birthday.second_name}")
   end
 
   it 'returns its birthday' do

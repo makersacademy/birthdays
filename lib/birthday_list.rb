@@ -1,3 +1,5 @@
+require 'birthday'
+
 class Birthdays
   attr_reader :list
 
@@ -22,8 +24,8 @@ class Birthdays
     names
   end
 
-  def age(birthday)
-    Time.now.year - birthday.birthday.year
+  def age(bday)
+    Time.now.year - bday.birthday.year
   end
 
   def date_formatting(date)
