@@ -25,10 +25,13 @@ class Birthdays
     end
 
     names.each do |name|
-      puts "It's #{name.name}'s birthday today! They are #{age(name)} years old!"
+      puts "It's #{name.name}'s birthday today! " +
+      "They are #{age(name)} years old!"
     end
   end
 
+  private
+  
   def age(name)
     Time.now.year - name.birthday.year
   end
