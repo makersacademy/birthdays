@@ -92,5 +92,12 @@ RSpec.describe Birthdays do
       subject.store(birthday1)
       expect(subject.age(birthday1)).to eq 19
     end
+
+    it "shows nothing if no match" do
+      birthday1 = Birthday.new("John", "Adams", "11 March 1795")
+      subject.store(birthday1)
+
+      expect(subject.check_birthday).to be_empty
+    end
   end
 end
