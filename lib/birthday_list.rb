@@ -23,11 +23,14 @@ class Birthdays
     names = @list.select do |record|
       date_short_format(record.birthday) == date_short_format(Time.now)
     end
-    names
+
+    names.each do |name|
+      puts "It's #{name.name}'s birthday today! They are #{age(name)} years old!"
+    end
   end
 
-  def age(bday)
-    Time.now.year - bday.birthday.year
+  def age(name)
+    Time.now.year - name.birthday.year
   end
 
   def date_short_format(date)

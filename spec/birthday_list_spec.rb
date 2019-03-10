@@ -37,7 +37,7 @@ RSpec.describe Birthdays do
     d = Time.now.day
     birthday1 = double(name: "John Adams", birthday: Time.new(2001, m, d))
     subject.store(birthday1)
-    expect(subject.check_birthday.first).to eq birthday1
+    expect { subject.check_birthday.first }.to output("It's #{birthday1.name}'s birthday today! They are #{subject.age(birthday1)} years old!\n").to_stdout
   end
 
   it "shows matching birthdays" do
@@ -47,7 +47,8 @@ RSpec.describe Birthdays do
     birthday2 = double(name: "John Adams", birthday: Time.new(2001, m, d))
     subject.store(birthday1)
     subject.store(birthday2)
-    expect(subject.check_birthday).to eq [birthday1, birthday2]
+    expect { subject.check_birthday }.to output("It's #{birthday1.name}'s birthday today! They are #{subject.age(birthday1)} years old!\n" +
+    "It's #{birthday2.name}'s birthday today! They are #{subject.age(birthday2)} years old!\n").to_stdout
   end
 
   context "can calculate the age of the matched person " do
@@ -84,7 +85,8 @@ RSpec.describe Birthdays do
       subject.store(birthday2)
       subject.store(birthday3)
 
-      expect(subject.check_birthday).to eq [birthday1, birthday2]
+      expect { subject.check_birthday } .to output("It's #{birthday1.name}'s birthday today! They are #{subject.age(birthday1)} years old!\n" +
+      "It's #{birthday2.name}'s birthday today! They are #{subject.age(birthday2)} years old!\n").to_stdout
     end
 
     it "can calculate age of matched person" do
