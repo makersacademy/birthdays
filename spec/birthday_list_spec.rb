@@ -82,5 +82,11 @@ RSpec.describe Birthdays do
 
       expect(subject.check_birthday).to eq [birthday1, birthday2]
     end
+
+    it "can calculate age of matched person" do
+      birthday1 = Birthday.new("John", "Adams", "10 March 2000")
+      subject.store(birthday1)
+      expect(subject.age(birthday1)).to eq 19
+    end
   end
 end
