@@ -1,4 +1,9 @@
 module BirthdayHelperMethodsModule
+  def add_one_double 
+    birthday = instance_double(Birthday)
+    subject.store(birthday)
+  end
+  
   def create_and_add_two_birthdays 
     birthday1 = double(name: "John Adams", birthday: Time.new(1795, 1, 10))
     birthday2 = double(name: "May Day", birthday: Time.new(1795, 1, 10))
@@ -41,5 +46,10 @@ module BirthdayHelperMethodsModule
     subject.store(birthday1)
     subject.store(birthday2)
     subject.store(birthday3)
+  end
+
+  def add_one_non_matching_birthday
+    birthday1 = Birthday.new("John", "Adams", "11 March 1795")
+    subject.store(birthday1)
   end
 end

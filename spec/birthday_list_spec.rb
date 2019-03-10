@@ -15,9 +15,8 @@ RSpec.describe Birthdays do
   end
 
   it "adds a birthday to the birthday list" do
-    birthday = instance_double(Birthday)
-    subject.store(birthday)
-    expect(subject.list).to include(birthday)
+    add_one_double
+    expect(subject.list.size).to eq 1
   end
   
   it "shows returns the birthdays stored in the birthday list - #view_all not implemented yet" do
@@ -28,19 +27,16 @@ RSpec.describe Birthdays do
 
   it "shows all birthdays from the list in a nice format - #view_all implemented - mocked birthday class" do
     create_and_add_two_birthdays
-   
     expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\nName: May Day | Birthday: 10 January 1795\n").to_stdout
   end
 
   it "shows a matching birthday" do
     create_one_matching_birthday
-
     expect { subject.check_birthday.first }.to output("It's John Adams's birthday today! They are 19 years old!\n").to_stdout
   end
 
   it "shows matching birthdays" do
     create_two_matched_birthdays
-
     expect { subject.check_birthday }.to output("It's John Adams's birthday today! They are 224 years old!\n" +
     "It's John Adams's birthday today! They are 224 years old!\n").to_stdout
   end  
@@ -63,9 +59,7 @@ RSpec.describe Birthdays do
     end
 
     it "shows nothing if no match" do
-      birthday1 = Birthday.new("John", "Adams", "11 March 1795")
-      subject.store(birthday1)
-
+      add_one_non_matching_birthday
       expect(subject.check_birthday).to be_empty
     end
   end
