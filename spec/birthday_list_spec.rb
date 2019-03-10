@@ -39,8 +39,6 @@ RSpec.describe Birthdays do
   end
 
   it "shows matching birthdays" do
-    m = Time.now.month
-    d = Time.now.day
     birthday1 = double(name: "John Adams", birthday: Time.new(2000, 3, 10))
     birthday2 = double(name: "John Adams", birthday: Time.new(2001, 3, 10))
     subject.store(birthday1)

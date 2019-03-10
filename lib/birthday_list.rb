@@ -21,7 +21,7 @@ class Birthdays
 
   def check_birthday
     names = @list.select do |record|
-      date_format_for_matching(record.birthday) == date_format_for_matching(Time.now)
+      date_short_format(record.birthday) == date_short_format(Time.now)
     end
     names
   end
@@ -30,7 +30,7 @@ class Birthdays
     Time.now.year - bday.birthday.year
   end
 
-  def date_format_for_matching(date)
+  def date_short_format(date)
     date.strftime("%d-%m")
   end
 
