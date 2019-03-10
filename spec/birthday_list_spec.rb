@@ -67,9 +67,11 @@ RSpec.describe Birthdays do
 
     it "shows all birthdays" do
       birthday1 = Birthday.new("John", "Adams", "10 January 1795")
+      birthday2 = Birthday.new("May", "Day", "17 January 2000")
       subject.store(birthday1)
+      subject.store(birthday2)
 
-      expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\n").to_stdout
+      expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\nName: May Day | Birthday: 17 January 2000\n").to_stdout
     end
   end
 end
