@@ -1,4 +1,5 @@
 require 'birthday'
+require 'time'
 
 class Birthdays
   attr_reader :list
@@ -13,13 +14,14 @@ class Birthdays
 
   def view_all
     @list.each do |record| 
-      puts "Name: #{record.name} | Birthday: #{record.birthday}"
+      time = time_to_string(record.birthday)
+      puts "Name: #{record.name} | Birthday: #{time}"
     end
   end
 
   def check_birthday
     names = @list.select do |record|
-      date_formatting(record.birthday) == date_formatting(Time.now)
+      date_format_for_matching(record.birthday) == date_format_for_matching(Time.now)
     end
     names
   end
@@ -28,8 +30,12 @@ class Birthdays
     Time.now.year - bday.birthday.year
   end
 
-  def date_formatting(date)
+  def date_format_for_matching(date)
     date.strftime("%d-%m")
+  end
+
+  def time_to_string(date)
+    date.strftime("%d %B %Y")
   end
 
 end

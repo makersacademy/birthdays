@@ -24,8 +24,8 @@ RSpec.describe Birthdays do
   end
 
   it "shows all birthdays from the list in a nice format - #view_all implemented - mocked birthday class" do
-    birthday1 = double(name: "John Adams", birthday: "10 January 1795")
-    birthday2 = double(name: "May Day", birthday: "10 January 1795")
+    birthday1 = double(name: "John Adams", birthday: Time.new(1795, 1, 10))
+    birthday2 = double(name: "May Day", birthday: Time.new(1795, 1, 10))
     subject.store(birthday1)
     subject.store(birthday2)
    
@@ -33,9 +33,7 @@ RSpec.describe Birthdays do
   end
 
   it "shows a matching birthday" do
-    m = Time.now.month
-    d = Time.now.day
-    birthday1 = double(name: "John Adams", birthday: Time.new(1795, m, d))
+    birthday1 = double(name: "John Adams", birthday: Time.new(2001, 3, 10))
     subject.store(birthday1)
     expect(subject.check_birthday.first).to eq birthday1
   end
@@ -43,8 +41,8 @@ RSpec.describe Birthdays do
   it "shows matching birthdays" do
     m = Time.now.month
     d = Time.now.day
-    birthday1 = double(name: "John Adams", birthday: Time.new(1795, m, d))
-    birthday2 = double(name: "John Adams", birthday: Time.new(1900, m, d))
+    birthday1 = double(name: "John Adams", birthday: Time.new(2000, 3, 10))
+    birthday2 = double(name: "John Adams", birthday: Time.new(2001, 3, 10))
     subject.store(birthday1)
     subject.store(birthday2)
     expect(subject.check_birthday).to eq [birthday1, birthday2]
@@ -60,7 +58,7 @@ RSpec.describe Birthdays do
 
   context "tests method with real birthday class" do
     it "adds birthday to the list" do
-      birthday = Birthday.new("John","Adams","17 January 2000")
+      birthday = Birthday.new("John", "Adams", "17 January 2000")
       subject.store(birthday)
       expect(subject.list).to include(birthday)
     end
@@ -72,6 +70,17 @@ RSpec.describe Birthdays do
       subject.store(birthday2)
 
       expect { subject.view_all }.to output("Name: John Adams | Birthday: 10 January 1795\nName: May Day | Birthday: 17 January 2000\n").to_stdout
+    end
+
+    it "shows two matching birthdays" do
+      birthday1 = Birthday.new("John", "Adams", "10 March 1795")
+      birthday2 = Birthday.new("May", "Day", "10 March 2000")
+      birthday3 = Birthday.new("May", "Day", "1 Jan 1985")
+      subject.store(birthday1)
+      subject.store(birthday2)
+      subject.store(birthday3)
+
+      expect(subject.check_birthday).to eq [birthday1, birthday2]
     end
   end
 end

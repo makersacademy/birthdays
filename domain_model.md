@@ -75,3 +75,24 @@ Say nothing if no match.
 ### Separate Birthday class
 
 - created a birthday object with name, second name and birthday
+
+### Isolated birthday_list with Birthday mock
+
+- have done that while building the first steps as i did not have a Birthday class
+
+#### brithday class
+
+- stores first name and second name
+- stores birthday - (converts to time format)
+
+#### birthday list
+
+- stores date as Time object
+
+- #check_birthday
+
+  - compares time by month and day
+
+- # show a matching object
+
+#changed how birthday class stores birthday -as time object and adjusted double tests
