@@ -62,6 +62,7 @@ RSpec.describe Birthdays do
   end
 
   context "tests method with real birthday class" do
+
     it "adds birthday to the list" do
       birthday = Birthday.new("John", "Adams", "17 January 2000")
       subject.store(birthday)
@@ -69,8 +70,10 @@ RSpec.describe Birthdays do
     end
 
     it "shows all birthdays" do
-      birthday1 = Birthday.new("John", "Adams", "10 January 1795")
-      birthday2 = Birthday.new("May", "Day", "17 January 2000")
+      date1 = Time.new(1795,1,10).strftime("%d %B %Y")
+      date2 = Time.new(2000,1,17).strftime("%d %B %Y")
+      birthday1 = Birthday.new("John", "Adams", date1)
+      birthday2 = Birthday.new("May", "Day", date2)
       subject.store(birthday1)
       subject.store(birthday2)
 
@@ -78,9 +81,12 @@ RSpec.describe Birthdays do
     end
 
     it "shows two matching birthdays" do
-      birthday1 = Birthday.new("John", "Adams", "10 March 1795")
-      birthday2 = Birthday.new("May", "Day", "10 March 2000")
-      birthday3 = Birthday.new("May", "Day", "1 Jan 1985")
+      date1 = Time.new(1795,3,10).strftime("%d %B %Y")
+      date2 = Time.new(2000,3,10).strftime("%d %B %Y")
+      date3 = Time.new(1985,1,1).strftime("%d %B %Y")
+      birthday1 = Birthday.new("John", "Adams", date1)
+      birthday2 = Birthday.new("May", "Day", date2)
+      birthday3 = Birthday.new("May", "Day", date3)
       subject.store(birthday1)
       subject.store(birthday2)
       subject.store(birthday3)
@@ -90,9 +96,10 @@ RSpec.describe Birthdays do
     end
 
     it "can calculate age of matched person" do
-      birthday1 = Birthday.new("John", "Adams", "10 March 2000")
+      date = Time.new(1795,3,10).strftime("%d %B %Y")
+      birthday1 = Birthday.new("John", "Adams", date)
       subject.store(birthday1)
-      expect(subject.age(birthday1)).to eq 19
+      expect(subject.age(birthday1)).to eq 224
     end
 
     it "shows nothing if no match" do
