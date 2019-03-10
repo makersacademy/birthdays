@@ -33,14 +33,18 @@ RSpec.describe Birthdays do
   end
 
   it "shows a matching birthday" do
-    birthday1 = double(name: "John Adams", birthday: Time.new(2001, 3, 10))
+    m = Time.now.month
+    d = Time.now.day
+    birthday1 = double(name: "John Adams", birthday: Time.new(2001, m, d))
     subject.store(birthday1)
     expect(subject.check_birthday.first).to eq birthday1
   end
 
   it "shows matching birthdays" do
-    birthday1 = double(name: "John Adams", birthday: Time.new(2000, 3, 10))
-    birthday2 = double(name: "John Adams", birthday: Time.new(2001, 3, 10))
+    m = Time.now.month
+    d = Time.now.day
+    birthday1 = double(name: "John Adams", birthday: Time.new(2000, m, d))
+    birthday2 = double(name: "John Adams", birthday: Time.new(2001, m, d))
     subject.store(birthday1)
     subject.store(birthday2)
     expect(subject.check_birthday).to eq [birthday1, birthday2]
@@ -48,7 +52,9 @@ RSpec.describe Birthdays do
 
   context "can calculate the age of the matched person " do
     it "calculates the age" do
-      birthday = double(name: "John Adams", birthday: Time.new(2000, 3, 9))
+      m = Time.now.month
+      d = Time.now.day
+      birthday = double(name: "John Adams", birthday: Time.new(2000, m, d))
       subject.store(birthday)
       expect(subject.age(birthday)).to eq 19
     end 
