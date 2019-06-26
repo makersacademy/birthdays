@@ -28,12 +28,22 @@ class BirthDayList
     end
   end
 
+  private
+
   def age
-    if @bday_month <= @this_month && @bday_day <= @this_day
+    if born_month && born_day
       @age = @this_year - @bday_year
     else
       @age = @this_year - @bday_year - 1
     end
+  end
+
+  def born_month
+    @bday_month <= @this_month
+  end
+
+  def born_day
+    @bday_day <= @this_day
   end
 
   def birthday(friend)
