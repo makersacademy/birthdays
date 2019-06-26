@@ -59,9 +59,3 @@ class BirthDayList
   end
 
 end
-
-new_list = BirthDayList.new
-new_list.add("Tim Cole", "03/07/1985")
-new_list.add("Lucy Cole", "08/09/1983")
-new_list.add("Birthday Boy", "26/06/1984")
-new_list.current_birthdays
