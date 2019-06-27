@@ -1,18 +1,22 @@
 
-$birthdays = {}
+class Birthday
+#######
+def initialize
+  @birthdays = {}
+end
 
 def add_birthday(name,dob)
-  $birthdays[name] = dob
+  @birthdays[name] = dob
   return "Name stored!"
 end
 
 
 def check_birthdays
-  return $birthdays
+  return @birthdays
 end
 
 def how_old(name)
-  dob = $birthdays[name].split(' ').map(&:to_i)
+  dob = @birthdays[name].split(' ').map(&:to_i)
   require 'date'
   date = Date.today.to_s.split('-').reverse.map(&:to_i)
   birthdaygone = date[2] - dob[2]
@@ -28,8 +32,9 @@ end
 
 def whose_birthday
   birthdaytoday = false
+  require 'date'
   date = Date.today.to_s.split('-').reverse.map(&:to_i)
-  $birthdays.each { |name, dob|
+  @birthdays.each { |name, dob|
     dob = dob.split(' ').map(&:to_i)
     if date[0] == dob[0] && date[1] == dob[1]
       birthdaytoday = true
@@ -37,4 +42,6 @@ def whose_birthday
     end
   }
   return "nobody's bday ): " if birthdaytoday == false
+end
+########
 end
