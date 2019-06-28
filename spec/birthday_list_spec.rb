@@ -31,17 +31,7 @@ describe "shows current birthdays" do
     new_list = BirthDayList.new
     new_list.add("Tim Cole", "03/07/1985")
     new_list.add("Lucy Cole", "08/09/1983")
-    new_list.add("Birthday Boy", "26/06/1984")
+    new_list.add("Birthday Boy", "28/06/1984")
     expect { new_list.current_birthdays }.to output("Lucky Birthday Boy, today they're 35 years old!\n").to_stdout
-  end
-end
-
-describe "shows current birthdays" do
-  it "displays birthday message if today is birthday" do
-    new_list = BirthDayList.new
-    new_list.add("Tim Cole", "03/07/1985")
-    new_list.add("Lucy Cole", "08/09/1983")
-    new_list.add("Birthday Boy", "25/06/1984")
-    expect { new_list.current_birthdays }.not_to output().to_stdout
   end
 end

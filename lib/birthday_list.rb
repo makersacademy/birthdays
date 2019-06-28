@@ -3,11 +3,10 @@ BirthDayList = Class.new
 
 class BirthDayList
 
+  DATE_FORMAT = '%m-%d'
+
   def initialize
     @birthday_array = []
-    @this_day = Time.new.day
-    @this_month = Time.new.month
-    @this_year = Time.new.year
   end
 
   def add(name, birthday)
@@ -22,50 +21,38 @@ class BirthDayList
 
   def current_birthdays
     @birthday_array.each do |friend|
-      birthday(friend)
-      age
       puts_birthday(friend)
     end
   end
 
   private
 
-  def age
-    if born_month && born_day
-      @age = @this_year - @bday_year
+  def age(friend)
+    if already_born(friend)
+      Time.now.year - Date.parse(friend[:birthday]).year
     else
-      @age = @this_year - @bday_year - 1
+      Time.now.year - Date.parse(friend[:birthday]).year - 1
     end
   end
 
-  def born_month
-    @bday_month <= @this_month
-  end
-
-  def born_day
-    @bday_day <= @this_day
+  def already_born(friend)
+    birthday(friend) <= Time.now.strftime(DATE_FORMAT)
   end
 
   def birthday(friend)
-    @bday_day = friend[:birthday].split('/').first.to_i
-    @bday_month = friend[:birthday].split('/')[1].to_i
-    @bday_year = friend[:birthday].split('/').last.to_i
+    Date.parse(friend[:birthday]).strftime(DATE_FORMAT)
   end
 
   def puts_birthday(friend)
-    birthday_message(friend) if day_true && month_true
-  end
-
-  def day_true
-    @bday_day == @this_day
-  end
-
-  def month_true
-    @bday_month == @this_month
+    birthday_message(friend) if birthday(friend) == today
   end
 
   def birthday_message(friend)
-    puts "Lucky #{friend[:name]}, today they're #{@age} years old!"
+    puts "Lucky #{friend[:name]}, today they're #{age(friend)} years old!"
+  end
+
+  def today
+    Time.now.strftime(DATE_FORMAT)
   end
 
 end
