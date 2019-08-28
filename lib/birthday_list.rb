@@ -7,7 +7,7 @@ class BirthdayList
   end
 
   # input name and date of birth in the format of YYYY/MM/DD
-  def add(name, dob)
+  def add_to_list(name, dob)
     @birthday_list[name] = str_to_date(dob)
     puts "#{name} has been added to the list!"
   end
@@ -15,6 +15,14 @@ class BirthdayList
   def print_list
     @birthday_list.collect do |name, dob|
       puts "#{name}: #{date_to_str(dob)}"
+    end
+  end
+  
+  def have_birthday_on(today = Date.today)
+    @birthday_list.each do |name, dob|
+      if today.month == dob.month && today.day == dob.day
+        puts "It's #{name}'s birthday today! They are #{age_today(name)} years old!"
+      end
     end
   end
 
