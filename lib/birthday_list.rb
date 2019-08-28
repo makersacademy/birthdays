@@ -13,7 +13,7 @@ class BirthdayList
   end
 
   def print_list
-    @birthday_list.collect do |name, dob|
+    @birthday_list.each do |name, dob|
       puts "#{name}: #{date_to_str(dob)}"
     end
   end
@@ -51,8 +51,5 @@ class BirthdayList
     today.month > dob.month ||
       (today.month == dob.month && today.day >= dob.day)
   end
-    
-
-
    
 end
