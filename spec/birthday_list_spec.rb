@@ -1,29 +1,24 @@
 require 'birthday_list'
 
 describe BirthdayList do
-  subject { described_class.new }
-  def random_set_up birthday_list
-    today = Date.today
-    names = [
-      "Alastair Gilles",
-      "Antonija Kuhak",
-      "Fred Merrit",
-      "Lisa McMann",
-      "Tilly Henason"
-    ]
-    names.each do |name|
-      subject.store name, today.prev_year(rand(14..98)).prev_day(rand(1..363)).to_s
-    end
-  end
+  let(:output_string) { "Alastair".ljust(30) + "01/01/1991" }
+  let(:b_day_age) { 28 }
+  let(:not_b_day_age) { 30 }
+  let(:b_day_today) { double(:birthday,
+                             name: "Alastair",
+                             display_string: output_string,
+                             today?: true,
+                             age: b_day_age) }
+  let(:b_day_not_today) { double(:birthday,
+                                 name: "Alastair",
+                                 display_string: output_string,
+                                 today?: false,
+                                 age: not_b_day_age) }
 
-  def add_birthday_for_today birthday_list, name
-    age = rand(3..98)
-    birthday_list.store name, Date.today.prev_year(age).to_s
-    return age
-  end
+  subject { described_class.new }
 
   it { is_expected.to be_instance_of BirthdayList }
-  it { is_expected.to respond_to(:store).with(2).arguments }
+  it { is_expected.to respond_to(:store).with(1).arguments }
   it { is_expected.to respond_to(:show).with(0).arguments }
   it { is_expected.to respond_to(:check_today).with(0).arguments }
 
@@ -33,23 +28,22 @@ describe BirthdayList do
     end
 
     it "should print formatted output for one person" do
-      subject.store "Alastair", "01/12/1994"
+      subject.store b_day_today
       expected_output = "Name".ljust(30) + "Birthday\n"
-      expected_output << "Alastair".ljust(30) + "01/12/1994\n"
+      expected_output << output_string + "\n"
       expect { subject.show }.to output(expected_output).to_stdout
     end
 
     it "should print formatted output for multiple people" do
-      subject.store "Alastair", "01/12/1994"
-      subject.store "Jenny", "17/09/1987"
+      subject.store b_day_today
+      subject.store b_day_not_today
       expected_output = "Name".ljust(30) + "Birthday\n"
-      expected_output << "Alastair".ljust(30) + "01/12/1994\n"
-      expected_output << "Jenny".ljust(30) + "17/09/1987\n"
+      2.times { expected_output << output_string + "\n" }
       expect { subject.show }.to output(expected_output).to_stdout
     end
 
     it "shouldn't return anything" do
-      subject.store "Biggie", "7/9/1994"
+      subject.store b_day_today
       allow($stdout).to receive(:write)
       expect(subject.show).to be_nil
     end
@@ -57,21 +51,25 @@ describe BirthdayList do
 
   describe "#check_today" do
     it "should print a message if someone has a birthday today" do
-      random_set_up subject
-      age = add_birthday_for_today subject, "Becky"
+      2.times { subject.store b_day_not_today }
+      subject.store b_day_today
+      2.times { subject.store b_day_not_today }
 
-      expected_output = "It's Becky's birthday today! They are #{age} years old!\n"
+      expected_output = "It's Alastair's birthday today!"
+      expected_output << "They are #{b_day_age} years old!\n"
       expect { subject.check_today }.to output(expected_output).to_stdout
     end
 
     it "shouldn't print anything if no-one has a birthay" do
-      random_set_up subject
+      5.times { subject.store b_day_not_today }
       expect { subject.check_today }.to_not output.to_stdout
     end
 
     it "shouldn't return anything" do
-      random_set_up subject
-      add_birthday_for_today subject, "Print this, no return"
+      2.times { subject.store b_day_not_today }
+      subject.store b_day_today
+      2.times { subject.store b_day_not_today }
+
       allow($stdout).to receive(:write)
       expect(subject.check_today).to be_nil
     end

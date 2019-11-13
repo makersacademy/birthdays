@@ -5,27 +5,28 @@ class BirthdayList
   attr_reader :birthdays
 
   def initialize
-    @birthdays = {}
+    @birthdays = []
   end
 
-  def store name, date
-    @birthdays[name] = Date.parse(date)
+  def store birthday
+    @birthdays << birthday
   end
 
   def show
     return if birthdays.empty?
     puts "Name".ljust(30) + "Birthday"
-    birthdays.each do |name, b_day|
-      puts name.ljust(30) + b_day.strftime(DEFAULT_FORMAT)
+    birthdays.each do |birthday|
+      puts birthday.display_string
     end
     return
   end
 
   def check_today
-    @birthdays.each do |name, b_day|
-      if b_day.month == Date.today.month && b_day.day == Date.today.day
-        age = Date.today.year - b_day.year
-        puts "It's #{name}'s birthday today! They are #{age} years old!"
+    @birthdays.each do |birthday|
+      if birthday.today?
+        message = "It's #{birthday.name}'s birthday today!"
+        message << "They are #{birthday.age} years old!"
+        puts message
       end
     end
     return
