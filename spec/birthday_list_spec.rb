@@ -24,6 +24,11 @@ describe BirthdayList do
       expected_output << "Alastair".ljust(30) + "01/12/1994\n"
       expect { subject.show }.to output(expected_output).to_stdout
     end
+
+    it "shouldn't return anything" do
+      subject.store "Biggie", "7/9/1994"
+      expect(subject.show).to be_nil
+    end
   end
 
   describe "#check_today" do
@@ -34,6 +39,12 @@ describe BirthdayList do
 
       expected_output = "It's Becky's birthday today! They are 32 years old!\n"
       expect { subject.check_today }.to output(expected_output).to_stdout
+    end
+
+    it "shouldn't return anything" do
+      subject.store "Biggie", "7/9/1994"
+      subject.store "Today", Date.today.prev_year(26).to_s
+      expect(subject.check_today).to be_nil
     end
   end
 end

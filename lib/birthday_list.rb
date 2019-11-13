@@ -17,6 +17,7 @@ class BirthdayList
     @birthdays.each do |name, b_day|
       puts name.ljust(30) + b_day.strftime(DEFAULT_FORMAT)
     end
+    return
   end
 
   def check_today
@@ -26,5 +27,6 @@ class BirthdayList
         puts "It's #{name}'s birthday today! They are #{age} years old!"
       end
     end
+    return
   end
 end
