@@ -2,7 +2,7 @@ require 'birthday_list'
 
 describe BirthdayList do
   subject { described_class.new }
-  def set_up birthday_list
+  def random_set_up birthday_list
     today = Date.today
     names = [
       "Alastair Gilles",
@@ -57,7 +57,7 @@ describe BirthdayList do
 
   describe "#check_today" do
     it "should print a message if someone has a birthday today" do
-      set_up subject
+      random_set_up subject
       age = add_birthday_for_today subject, "Becky"
 
       expected_output = "It's Becky's birthday today! They are #{age} years old!\n"
@@ -65,12 +65,12 @@ describe BirthdayList do
     end
 
     it "shouldn't print anything if no-one has a birthay" do
-      set_up subject
+      random_set_up subject
       expect { subject.check_today }.to_not output.to_stdout
     end
 
     it "shouldn't return anything" do
-      set_up subject
+      random_set_up subject
       add_birthday_for_today subject, "Print this, no return"
       expect(subject.check_today).to be_nil
     end
