@@ -13,8 +13,9 @@ class BirthdayList
   end
 
   def show
+    return if birthdays.empty?
     puts "Name".ljust(30) + "Birthday"
-    @birthdays.each do |name, b_day|
+    birthdays.each do |name, b_day|
       puts name.ljust(30) + b_day.strftime(DEFAULT_FORMAT)
     end
     return
