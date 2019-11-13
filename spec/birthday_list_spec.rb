@@ -23,7 +23,6 @@ describe BirthdayList do
   end
 
   it { is_expected.to be_instance_of BirthdayList }
-  it { is_expected.to have_attributes birthdays: {} }
   it { is_expected.to respond_to(:store).with(2).arguments }
   it { is_expected.to respond_to(:show).with(0).arguments }
   it { is_expected.to respond_to(:check_today).with(0).arguments }
