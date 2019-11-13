@@ -50,6 +50,7 @@ describe BirthdayList do
 
     it "shouldn't return anything" do
       subject.store "Biggie", "7/9/1994"
+      allow($stdout).to receive(:write)
       expect(subject.show).to be_nil
     end
   end
@@ -71,6 +72,7 @@ describe BirthdayList do
     it "shouldn't return anything" do
       random_set_up subject
       add_birthday_for_today subject, "Print this, no return"
+      allow($stdout).to receive(:write)
       expect(subject.check_today).to be_nil
     end
   end
