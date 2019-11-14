@@ -1,5 +1,3 @@
-require 'date'
-
 class BirthdayList
   DEFAULT_FORMAT = "%d/%m/%Y"
   attr_reader :birthdays
