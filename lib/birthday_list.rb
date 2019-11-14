@@ -25,7 +25,7 @@ class BirthdayList
     @birthdays.each do |birthday|
       if birthday.today?
         message = "It's #{birthday.name}'s birthday today!"
-        message << "They are #{birthday.age} years old!"
+        message << " They are #{birthday.age} years old!"
         puts message
       end
     end

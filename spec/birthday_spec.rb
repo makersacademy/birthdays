@@ -7,13 +7,13 @@ describe Birthday do
 
   def birthday_today name, age
     date = Date.today.prev_year(age).to_s
-    described_class.new(default_name, date)
+    described_class.new(name, date)
   end
 
   def birthday_not_today name, age
     date = Date.today.prev_year(age).prev_day(rand(1..364)).to_s
     p date
-    described_class.new(default_name, date)
+    described_class.new(name, date)
   end
 
   it { is_expected.to be_instance_of Birthday }

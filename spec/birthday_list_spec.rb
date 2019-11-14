@@ -8,12 +8,14 @@ describe BirthdayList do
                              name: "Alastair",
                              display_string: output_string,
                              today?: true,
-                             age: b_day_age) }
+                             age: b_day_age)
+  }
   let(:b_day_not_today) { double(:birthday,
                                  name: "Alastair",
                                  display_string: output_string,
                                  today?: false,
-                                 age: not_b_day_age) }
+                                 age: not_b_day_age)
+  }
 
   subject { described_class.new }
 
@@ -56,7 +58,7 @@ describe BirthdayList do
       2.times { subject.store b_day_not_today }
 
       expected_output = "It's Alastair's birthday today!"
-      expected_output << "They are #{b_day_age} years old!\n"
+      expected_output << " They are #{b_day_age} years old!\n"
       expect { subject.check_today }.to output(expected_output).to_stdout
     end
 
