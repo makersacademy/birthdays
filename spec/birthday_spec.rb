@@ -12,13 +12,8 @@ describe Birthday do
 
   def birthday_not_today name, age
     date = Date.today.prev_year(age).prev_day(rand(1..364)).to_s
-    p date
     described_class.new(name, date)
   end
-
-  it { is_expected.to be_instance_of Birthday }
-
-  it { is_expected.to respond_to :display_string }
 
   describe "#display_string" do
     it "should return a formatted string" do
@@ -26,8 +21,6 @@ describe Birthday do
       expect(subject.display_string).to eq expected_result
     end
   end
-
-  it { is_expected.to respond_to :today? }
 
   describe "#today?" do
     it "should return true if it is today" do
@@ -40,8 +33,6 @@ describe Birthday do
       expect(birthday.today?).to be false
     end
   end
-
-  it { is_expected.to respond_to :age }
 
   describe "#age" do
     it "should return an Integer" do

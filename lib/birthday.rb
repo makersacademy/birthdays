@@ -24,7 +24,9 @@ class Birthday
   private
 
   def age_adjustment
-    t = Date.today
-    t.month > date.month || (t.month == date.month && t.day >= date.day) ? 0 : 1
+    today = Date.today
+    return 0 if today.month > date.month
+    return 0 if today.month == date.month && today.day >= date.day
+    return 1
   end
 end
