@@ -1,13 +1,15 @@
 class BirthdayList
   DEFAULT_FORMAT = "%d/%m/%Y"
+  private
   attr_reader :birthdays
+  public
 
   def initialize
     @birthdays = []
   end
 
   def store birthday
-    @birthdays << birthday
+    birthdays << birthday
   end
 
   def show
@@ -20,7 +22,7 @@ class BirthdayList
   end
 
   def check_today
-    @birthdays.each do |birthday|
+    birthdays.each do |birthday|
       if birthday.today?
         message = "It's #{birthday.name}'s birthday today!"
         message << " They are #{birthday.age} years old!"
