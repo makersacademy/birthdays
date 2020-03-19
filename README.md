@@ -44,3 +44,12 @@ I can check whose birthday it is today
 - it must tell me something like ""It's Mary Poppin's birthday today! They are 124 years old!"
 - if there are no birthdays for that day it must print nothing
 ```
+
+### Domain modelling
+
+| Object | Message |
+| ------ | ------- |
+| User |  |
+| Birthday_List | store\_birthday(friend) |
+| Birthday_List | print\_birthdays |
+| Birthday_List | show\_todays\_birthdays |
