@@ -1,6 +1,7 @@
 require 'birthday_list'
 
 describe BirthdayTracker do
+
   subject { BirthdayTracker.new }
 
   describe '#store' do
@@ -37,5 +38,13 @@ describe BirthdayTracker do
     it "responds" do
       expect(subject).to respond_to :today
     end
+    it "prints a list of friends if their birthday is today" do
+      # Chris's bday is today
+      subject.store('Chris', '1985-03-20')
+      # Daisy's bday is not today
+      subject.store('Daisy', '1995-04-10')
+      expect { subject.today }.to output("It's Chris's birthday today! They are 35 years old!\n").to_stdout
+    end
   end
+
 end
