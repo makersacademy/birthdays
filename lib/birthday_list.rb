@@ -1,15 +1,18 @@
 class BirthdayTracker
-  def intialize
-    @storage = {}
+  def initialize
+    @storage = Hash.new
   end
 
   attr_reader :storage
 
   def store(name, dob)
     
+    @storage[name] = dob 
   end
 
   def all
-    puts 'Chris: 1985-03-20'
+    @storage.each do |name, dob|
+      puts "#{name}: #{dob}"
+    end
   end
 end
