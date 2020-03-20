@@ -12,15 +12,24 @@ describe BirthdayTracker do
     end
   end
 
+  describe "@storage" do
+    it "responds" do
+      expect(subject).to respond_to :storage
+    end
+
+  end
+
   describe '#all' do
     it 'responds' do
       expect(subject).to respond_to :all
     end
     it 'prints a list of a stored friend and birthday' do
       subject.store('Chris', '1985-03-20')
-      expect { subject.all }.to output('Chris: 1985-03-20').to_stdout
+      expect { subject.all }.to output("Chris: 1985-03-20\n").to_stdout
     end
+    # it 'prints two stored friends and birthdays' do
+    #   subject.store('Daisy', '1995-04-10')
+    #   expect { subject.all }.to output('Chris: 1985-03-20\/\n').to_stdout
+    # end
   end
 end
-
-# subject.store('Chris', '1985-03-20')
