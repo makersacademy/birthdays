@@ -3,6 +3,7 @@ require 'birthday_list'
 describe BirthdayList do
   let(:first_birthday) { double(:birthday, :date => "1st January") }
   let(:second_birthday) { double(:birthday, :date => "15th August") }
+  let(:first_birthday_new) {double(:birthday, :date => Time.new(1977, 1, 1), :to_s => "1 1 1977")}
 
   it 'stores friends birthdays' do
     expect(subject).to respond_to(:store).with(2).argument
