@@ -11,4 +11,12 @@ describe BirthdayTracker do
       expect(subject).to respond_to(:store).with(2).arguments
     end
   end
+
+  describe "#all" do
+    it "responds" do
+      expect(subject).to respond_to :all
+    end
+  end
 end
+
+# subject.store("Chris", "1985-03-20")
