@@ -16,7 +16,6 @@ describe BirthdayTracker do
     it "responds" do
       expect(subject).to respond_to :storage
     end
-
   end
 
   describe '#all' do
@@ -30,7 +29,13 @@ describe BirthdayTracker do
     it 'prints two stored friends and birthdays' do
       subject.store('Chris', '1985-03-20')
       subject.store('Daisy', '1995-04-10')
-      expect { subject.all }.to output("Chris: 1985-03-20\n""Daisy: 1995-04-10\n").to_stdout
+      expect { subject.all }.to output("Chris: 1985-03-20\nDaisy: 1995-04-10\n").to_stdout
+    end
+  end
+
+  describe '#today' do
+    it "responds" do
+      expect(subject).to respond_to :today
     end
   end
 end
