@@ -16,4 +16,4 @@ More requirements:
 | Objects | Messages |
 |---|---|
 | User |  |
-| BirthdayTracker | all (see all birthdays) <br> today (see today's birthdays) <br> store (add a birthday to storage) |
+| BirthdayTracker | all (see all birthdays) <br> today (see today's birthdays) <br> store (add friend and their birthday to storage) |
