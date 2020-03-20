@@ -21,10 +21,6 @@ More requirements:
 - Test-drive extracting a birthday class
 - Isolate your birthday list class using a mock for Birthday
 
-## My approach
-
-I intend to go through the full process of creating user stories, tests and code implementation for this exercise so I can practice the processes I've been learning so far on the course.
-
 ### User stories
 
 ```
@@ -44,12 +40,3 @@ I can check whose birthday it is today
 - it must tell me something like ""It's Mary Poppin's birthday today! They are 124 years old!"
 - if there are no birthdays for that day it must print nothing
 ```
-
-### Domain modelling
-
-| Object | Message |
-| ------ | ------- |
-| User |  |
-| Birthday_List | store\_birthday(friend) |
-| Birthday_List | print\_birthdays |
-| Birthday_List | show\_todays\_birthdays |
