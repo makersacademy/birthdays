@@ -1,5 +1,6 @@
-class BirthdayList
+require_relative './birthday'
 
+class BirthdayList
   COLUMN_SPACER = "\t\t\t"
 
   def initialize 
