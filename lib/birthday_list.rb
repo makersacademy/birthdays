@@ -1,10 +1,12 @@
 class BirthdayTracker
-  def store(name, dob)
-    
-  end
-  
   def intialize
     @storage = {}
+  end
+
+  attr_reader :storage
+
+  def store(name, dob)
+    
   end
 
   def all
