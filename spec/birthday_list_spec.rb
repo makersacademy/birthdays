@@ -1,9 +1,8 @@
 require 'birthday_list'
 
 describe BirthdayList do
-  let(:first_birthday) { double(:birthday, :date => "1st January") }
-  let(:second_birthday) { double(:birthday, :date => "15th August") }
-  let(:first_birthday_new) {double(:birthday, :date => Time.new(1977, 1, 1), :to_s => "1 1 1977")}
+  let(:first_birthday) {double(:birthday, :date => Time.new(1977, 1, 1), :to_s => "1 1 1977")}
+  let(:second_birthday) {double(:birthday, :date => Time.new(1958, 8, 15), :to_s => "15 8 1958")}
 
   it 'stores friends birthdays' do
     expect(subject).to respond_to(:store).with(2).argument
@@ -15,13 +14,13 @@ describe BirthdayList do
 
   it 'prints all of the stored friends and their birthdays, each on a single line with a tidy format when a single friend is stored' do
     subject.store("Phil", first_birthday)
-    expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1st January\n").to_stdout
+    expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1 1 1977\n").to_stdout
   end
 
   it 'prints all stored friends and their birthdays, each on a single line with a tidy format when multiple friends are stored' do
     subject.store("Phil", first_birthday)
     subject.store("Steve", second_birthday)
-    expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1st January\nSteve#{BirthdayList::COLUMN_SPACER}15th August\n").to_stdout
+    expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1 1 1977\nSteve#{BirthdayList::COLUMN_SPACER}15 8 1958\n").to_stdout
   end
 
   it 'when you ask it to print todays birthdays and there are none, it prints nothing' do

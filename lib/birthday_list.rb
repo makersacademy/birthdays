@@ -24,6 +24,6 @@ class BirthdayList
   private
 
   def print_friend_and_birthday(friend, birthday)
-    puts "#{friend}#{COLUMN_SPACER}#{birthday.date}"
+    puts "#{friend}#{COLUMN_SPACER}#{birthday.to_s}"
   end
 end
