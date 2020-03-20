@@ -7,6 +7,8 @@ describe BirthdayTracker do
     it "responds" do
       expect(subject).to respond_to :store
     end
-    it "accepts tw"
+    it "accepts two arguments" do
+      expect(subject).to respond_to(:store).with(2).arguments
+    end
   end
 end

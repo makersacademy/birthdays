@@ -1,5 +1,5 @@
 class BirthdayTracker
-  def store
+  def store(name, dob)
     
   end
 end
