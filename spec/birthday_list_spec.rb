@@ -23,4 +23,9 @@ describe BirthdayList do
     subject.store("Steve", second_birthday)
     expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1st January\nSteve#{BirthdayList::COLUMN_SPACER}15th August\n").to_stdout
   end
+
+  it 'when you ask it to print todays birthdays and there are none, it prints nothing' do
+    subject.store("Phil", first_birthday)
+    expect { subject.print_todays_birthdays }.to output("").to_stdout
+  end
 end

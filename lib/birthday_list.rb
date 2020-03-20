@@ -17,6 +17,10 @@ class BirthdayList
     end
   end
 
+  def print_todays_birthdays
+
+  end
+
   private
 
   def print_friend_and_birthday(friend, birthday)
