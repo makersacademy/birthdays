@@ -6,17 +6,19 @@ describe BirthdayList do
   end
 
   it 'confirms that a friends birthday has been stored' do
-    expect(subject.store("Phil", "1st January")).to eq("Birthday stored!")
+    birthday = Birthday.new("1st January")
+    expect(subject.store("Phil", birthday)).to eq("Birthday stored!")
   end
 
   it 'prints all of the stored friends and their birthdays, each on a single line with a tidy format when a single friend is stored' do
-    subject.store("Phil", "1st January")
+    birthday = Birthday.new("1st January")
+    subject.store("Phil", birthday)
     expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1st January\n").to_stdout
   end
 
   it 'prints all stored friends and their birthdays, each on a single line with a tidy format when multiple friends are stored' do
-    subject.store("Phil", "1st January")
-    subject.store("Steve", "15th August")
+    subject.store("Phil", Birthday.new("1st January"))
+    subject.store("Steve", Birthday.new("15th August"))
     expect { subject.print_stored_friends }.to output("Phil#{BirthdayList::COLUMN_SPACER}1st January\nSteve#{BirthdayList::COLUMN_SPACER}15th August\n").to_stdout
   end
 end
