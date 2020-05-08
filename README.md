@@ -1,19 +1,6 @@
-### Quick Start
+# Birthdays
 
-Fork this repository to your github account and clone it to your machine. Then install the dependencies:
-```bash
-> git clone https://github.com/makersacademy/birthdays.git
-> cd birthdays
-> bundle
-```
-
-### Instructions
-
-- Test-drive an implementation of the requirements
-- Make sure your code is [linted](https://github.com/rubocop-hq/rubocop)
-- [Open a PR](https://services.github.com/on-demand/github-cli/open-pull-request-github) when you've finished
-
-### Requirements
+## Requirements/User Stories
 
 I want a program that I can load in IRB that allows me to
 - Store all of my friends’ birthdays so I can keep track of them
@@ -24,11 +11,9 @@ More requirements:
 - Test-drive extracting a birthday class
 - Isolate your birthday list class using a mock for Birthday
 
-### TDD resources
+## Domain Model
 
-- https://github.com/makersacademy/course/blob/master/pills/tdd.md
-- https://github.com/makersacademy/course/blob/master/pills/tdd_quality_discussion.md
-
-### Mocking
-
-- https://relishapp.com/rspec/rspec-mocks/docs/basics/test-doubles
+| Objects | Messages |
+|---|---|
+| User |  |
+| BirthdayTracker | all (see all birthdays) <br> today (see today's birthdays) <br> store (add friend and their birthday to storage) |
