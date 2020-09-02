@@ -7,10 +7,8 @@ describe 'store_birthday method' do
 end
 
 describe 'print_birthdays method' do
-  it 'prints a list of stored friends and their birthdays' do
-    name = 'Jim'
-    birthday = 01-01-1945
-    store_birthday(name, birthday)
-    expect(get_birthdays).to eq "#{name} #{birthday}"
+  it 'prints a birthday in a tidy format, when only one saved' do
+    store_birthday('Veronica Lee', 01-01-1960)
+    expect { print_birthdays }.to output("Veronica Lee (1 January 1960)\n").to_stdout
   end
 end
