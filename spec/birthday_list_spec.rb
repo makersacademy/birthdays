@@ -11,4 +11,10 @@ describe 'print_birthdays method' do
     store_birthday('Veronica Lee', 01-01-1960)
     expect { print_birthdays }.to output("Veronica Lee (1 January 1960)\n").to_stdout
   end
+
+  it 'prints all stored birthdays, each on a line in a tidy format' do
+    store_birthday('Veronica Lee', 01-01-1960)
+    store_birthday('Harry Potter', 31-07-1980)
+    expect { print_birthdays }.to output("Veronica Lee (1 January 1960)\nHarry Potter (31 July 1980)").to_stdout
+  end
 end
