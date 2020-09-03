@@ -1,24 +1,27 @@
 require 'birthday_list'
 
 describe BirthdayList do
-  subject { described_class }
 
-  describe 'store_birthday method' do
-    it 'returns a success message when passed a name and birthday' do
-      expect(subject.store_birthday('Jim', '01-01-1945')).to eq 'Birthday stored!'
+  describe 'store method' do
+    it 'stores a birthday' do
+      birthday_list = BirthdayList.new
+      expect(birthday_list.store('Jim', '01-01-1945')).to eq([{name: "Jim", date: "1 January 1945"}])
     end
   end
 
-  describe 'print_birthdays method' do
-    it 'prints a birthday in a tidy format, when only one saved' do
-      subject.store_birthday('Veronica Lee', '01-01-1960')
-      expect { subject.print_birthdays }.to output("Veronica Lee (1 January 1960)\n").to_stdout
+  describe 'print_all method' do
+    it 'prints a single birthday when only one saved' do
+      birthday_list = BirthdayList.new
+      birthday_list.store('Veronica Lee', '01-01-1980')
+      expect { birthday_list.print_all }.to output("Veronica Lee (1 January 1980)\n").to_stdout
     end
 
-    it 'prints all stored birthdays, each on a line in a tidy format' do
-      subject.store_birthday('Veronica Lee', '01-01-1960')
-      subject.store_birthday('Harry Potter', '31-07-1980')
-      expect { subject.print_birthdays }.to output("Veronica Lee (1 January 1960)\nHarry Potter (31 July 1980)").to_stdout
+    it 'prints all stored birthdays' do
+      birthday_list = BirthdayList.new
+
+      birthday_list.store('Veronica Lee', '01-01-1960')
+      birthday_list.store('Harry Potter', '31-07-1980')
+      expect { birthday_list.print_all }.to output("Veronica Lee (1 January 1960)\nHarry Potter (31 July 1980)\n").to_stdout
     end
   end
 end
