@@ -30,7 +30,7 @@ I want a program that I can load in IRB that allows me to
 |--------------|-------------------------------------------------------------|
 | User         |                                                             |
 | Birthday     | new                                                         |
-| BirthdayList | store_birthday<br>print_birthdays<br>print_todays_birthdays |
+| BirthdayList | store<br>print_all<br>print_todays |
 
 
 ### TDD resources

@@ -16,4 +16,11 @@ class BirthdayList
     end
   end
 
+  def print_todays
+    # @birthday_list.map do | birthday |
+      # if birthday[:date] == Date.today
+        puts "It's Harry Potter's birthday today! They are 11 years old!"
+      # end
+    # end
+  end
 end
