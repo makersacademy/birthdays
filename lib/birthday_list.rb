@@ -18,20 +18,32 @@ class Birthdays
     Time.now.strftime("%Y").to_i
   end
 
-  def birth_year(subject)
-    subject[:birthday].split('').last(4).join("").to_i
+  def birth_year(person)
+    person[:birthday].split('').last(4).join("").to_i
   end
+
+  def birthday?(person)
+    person[:birthday].split("").first(5).join
+  end
+
+  def today?(person)
+    Time.now.strftime("%d/%m")
+  end
+
+  def persons_age(person)
+    Time.now.strftime("%Y").to_i - person[:birthday].split('').last(4).join("").to_i
+  end
+
 
 
   def check
     #this_year = 
     @birthday_list.each {|person|
      # birth_year = person[:birthday].split('').last(4).join("").to_i
-      age = this_year - birth_year(person)
-      birthday = person[:birthday].split("").first(5).join
-      today = Time.now.strftime("%d/%m")
-      if birthday == today
-        return "it is #{person[:name]}\'s birthday today, they are #{age} years old!"
+      #age = this_year - birth_year(person)
+      #today = Time.now.strftime("%d/%m")
+      if birthday?(person) == today?(person)
+        return "it is #{person[:name]}\'s birthday today, they are #{persons_age(person)} years old!"
       end
                           }
   end
