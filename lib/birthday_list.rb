@@ -1,7 +1,11 @@
-def store_birthday(name, birthday)
-  "Birthday stored!"
-end
+class BirthdayList
 
-def print_birthdays
-  puts "Veronica Lee (1 January 1960)"
+  def self.store_birthday(name, birthday)
+    "Birthday stored!"
+  end
+
+  def self.print_birthdays
+    puts "Veronica Lee (1 January 1960)"
+  end
+
 end
