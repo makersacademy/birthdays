@@ -1,19 +1,20 @@
 require 'birthday_list'
+require 'timecop'
 
 describe BirthdayList do
 
-  describe 'store' do
+  describe 'stores birthdays' do
     it 'stores a birthday' do
       birthday_list = BirthdayList.new
       expect(birthday_list.store('Jim', '01-01-1945')).to eq([{name: "Jim", date: "1 January 1945"}])
     end
   end
 
-  describe 'print_all' do
+  describe 'prints birthdays' do
     it 'prints a single birthday when only one stored' do
       birthday_list = BirthdayList.new
       birthday_list.store('Veronica Lee', '01-01-1980')
-      expect { birthday_list.print_all }.to output("Veronica Lee (1 January 1980)\n").to_stdout
+      expect { birthday_list.print }.to output("Veronica Lee (1 January 1980)\n").to_stdout
     end
 
     it 'prints all stored birthdays when multiple stored' do
@@ -21,23 +22,27 @@ describe BirthdayList do
 
       birthday_list.store('Veronica Lee', '01-01-1960')
       birthday_list.store('Harry Potter', '31-07-1980')
-      expect { birthday_list.print_all }.to output("Veronica Lee (1 January 1960)\nHarry Potter (31 July 1980)\n").to_stdout
+      expect { birthday_list.print }.to output("Veronica Lee (1 January 1960)\nHarry Potter (31 July 1980)\n").to_stdout
     end
   end
 
-  describe 'print_todays' do
-    def setup
-      travel_to Chronic.parse("31-07-1991")
+  describe "checks for birthdays today" do
+
+    it "gets a birthday that is today with the person's age" do
+        allow(Date).to receive(:today).and_return(Date.strptime('31-07-1991', '%d-%m-%Y'))
+        birthday_list = BirthdayList.new
+        birthday_list.store('Harry Potter', '31-07-1980')
+        expect { birthday_list.check_todays }.to output("It's Harry Potter's birthday today! They are 11 years old!\n").to_stdout
+      # end
     end
 
-    it "prints a birthday that is today with the person's age" do
+    it "gets all birthdays that are today with the people's ages" do
+      allow(Date).to receive(:today).and_return(Date.strptime('31-07-1991', '%d-%m-%Y'))
       birthday_list = BirthdayList.new
       birthday_list.store('Harry Potter', '31-07-1980')
-      expect { birthday_list.print_todays }.to output("It's Harry Potter's birthday today! They are 11 years old!\n").to_stdout
-    end
-
-    def teardown
-      travel_back
+      birthday_list.store('Veronica Lee', '03-11-1960')
+      birthday_list.store('Joe Bloggs', '31-07-1989')
+      expect { birthday_list.check_todays }.to output("It's Harry Potter's birthday today! They are 11 years old!\nIt's Joe Bloggs's birthday today! They are 2 years old!\n").to_stdout
     end
   end
 end

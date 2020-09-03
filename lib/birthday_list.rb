@@ -10,17 +10,17 @@ class BirthdayList
     @birthday_list << birthday
   end
 
-  def print_all
-    @birthday_list.each do | birthday |
+  def print
+    @birthday_list.each do |birthday|
       puts "#{birthday[:name]} (#{birthday[:date]})"
     end
   end
 
-  def print_todays
-    # @birthday_list.map do | birthday |
-      # if birthday[:date] == Date.today
-        puts "It's Harry Potter's birthday today! They are 11 years old!"
-      # end
-    # end
+  def check_todays
+    @birthday_list.each do |birthday|
+      if Date.parse(birthday[:date]).strftime('%d-%m') == Date.today.strftime('%d-%m')
+        puts "It's #{birthday[:name]}'s birthday today! They are #{Date.today.year - Date.parse(birthday[:date]).year} years old!"
+      end
+    end
   end
 end
