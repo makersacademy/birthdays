@@ -1,11 +1,19 @@
+require 'date'
+
 class BirthdayList
 
-  def self.store_birthday(name, birthday)
+  @birthday_list = []
+
+  def self.store_birthday(name, date)
+    birthday = { name: name, date: Date.strptime(date, '%d-%m-%Y') }
+    @birthday_list << birthday
     "Birthday stored!"
   end
 
   def self.print_birthdays
-    puts "Veronica Lee (1 January 1960)"
+    @birthday_list.each do | birthday |
+      puts "#{birthday[:name]} (#{birthday[:date].strftime('%-d %B %Y')})"
+    end
   end
 
 end
