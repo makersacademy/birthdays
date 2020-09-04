@@ -9,6 +9,7 @@ This program is a TDD exercise as part of the Makers Academy Week 1 activities.
 - [Open a PR](https://services.github.com/on-demand/github-cli/open-pull-request-github) when you've finished
 
 ### Requirements
+Note: Currently only the 'must have' requirements have been delivered.
 
 #### Must haves
 I want a program that I can load in IRB that allows me to
@@ -24,14 +25,11 @@ I want a program that I can load in IRB that allows me to
 - Test-drive extracting a birthday class
 - Isolate your birthday list class using a mock for Birthday
 
-### Functional Design
+### Design
 
-| Objects      | Messages                                                    |
-|--------------|-------------------------------------------------------------|
-| User         |                                                             |
-| Birthday     | new                                                         |
+| Classes      | Methods                        |
+|--------------|--------------------------------|
 | BirthdayList | store<br>print<br>check_todays |
-
 
 ### TDD resources
 
