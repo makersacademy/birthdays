@@ -6,21 +6,40 @@ class BirthdayList
   end
 
   def store(name, date)
-    birthday = { name: name, date: Date.strptime(date, '%d-%m-%Y').strftime('%-d %B %Y') }
+    birthday = { name: name, date: parse(date) }
     @birthday_list << birthday
   end
 
   def print
     @birthday_list.each do |birthday|
-      puts "#{birthday[:name]} (#{birthday[:date]})"
+      puts "#{birthday[:name]} (#{format_date(birthday[:date])})"
     end
   end
 
   def check_todays
     @birthday_list.each do |birthday|
-      if Date.parse(birthday[:date]).strftime('%d-%m') == Date.today.strftime('%d-%m')
-        puts "It's #{birthday[:name]}'s birthday today! They are #{Date.today.year - Date.parse(birthday[:date]).year} years old!"
+      if day_month(birthday[:date]) == day_month(Date.today)
+        puts "It's #{birthday[:name]}'s birthday today! They are #{age(birthday)} years old!"
       end
     end
+  end
+
+  private
+
+  def parse(date)
+    Date.parse(date)
+    # TODO: handle exceptions if not a valid date format
+  end
+
+  def format_date(date)
+    date.strftime('%-d %B %Y')
+  end
+
+  def day_month(date)
+    date.strftime('%d-%m')
+  end
+
+  def age(person)
+    Date.today.year - person[:date].year
   end
 end
