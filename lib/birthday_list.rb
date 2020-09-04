@@ -37,12 +37,11 @@ class Birthdays
   end
 
   def check
-    @birthday_list.each {
-                         |person|
-                          if birthday?(person) == today?
-                            return "it is #{person[:name]}\'s birthday today, they are #{persons_age(person)} years old!"
-                          end
-                        }
+    @birthday_list.each do |person|
+                        if birthday?(person) == today?
+                          return "it is #{person[:name]}\'s birthday today, they are #{persons_age(person)} years old!"
+                        end
+                        end
   end
 
 end
