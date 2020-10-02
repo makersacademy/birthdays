@@ -1,8 +1,19 @@
+require "Date"
+
 class Birthday
-    def initialize(date)
-        split_dates = date.split("/")
-        @day = date[0].to_i
-        @month = date[1].to_i
-        @year = date[2].to_i
+
+    attr_reader :written_date, :name
+
+    def initialize(name, date)
+        @name = name
+        @birthdate = date
+        @written_date = self.write_date(date)
+    end
+
+    private
+
+    def write_date(date)
+        read_date = Date.strptime(date, "%d/%m/%Y")
+        converted_date = read_date.strftime("%B %d, %Y")
     end
 end
