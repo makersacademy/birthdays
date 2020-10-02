@@ -1,3 +1,4 @@
+require "date"
 require_relative 'birthday'
  
 class BirthdayList
@@ -21,7 +22,31 @@ class BirthdayList
         true
     end
 
+    def today?
+        no_bdate = 0
+        today = Date.today.strftime("%d %m")
+
+        list.each do |person|
+            bdate = parsed_date(person.birthdate)
+            if bdate == today
+                puts "It's #{person.name}'s birthday today! They are #{person.get_age} years old!"
+            else
+                no_bdate += 1
+            end
+        end
+        self.birthday(no_bdate)
+    end
+
     private
+    
+    def birthday(num)
+        return false if num == list.count
+        true
+    end
+
+    def parsed_date(date)
+        Date.parse(date).strftime("%d %m")
+    end
 
     def name_exists?(name)
         list.each do |person|
