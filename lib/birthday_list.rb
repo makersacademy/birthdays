@@ -18,6 +18,7 @@ class BirthdayList
         list.each do |person|
             puts "#{person.name} || #{person.written_date}"
         end
+        true
     end
 
     private
