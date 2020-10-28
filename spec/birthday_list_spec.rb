@@ -15,3 +15,14 @@ describe Person do
     expect(Person.new("Alex", Time.new(1991, 06, 04)).name).to eq("Alex") 
   end
 end
+
+describe Directory do
+  it "creates itself successfully without input" do
+    expect(Directory.new).to be_a_kind_of(Directory)
+  end
+
+  it "creates itself with a list of people" do
+    list_of_people = [Person.new("Dave", Time.new(1991, 06, 04)), Person.new("Harriet", Time.new(1994, 07, 31))]
+    expect(Directory.new(list_of_people)).to be_a_kind_of(Directory)
+  end
+end

@@ -10,3 +10,9 @@ class Person
     "#{@dob.day}/#{@dob.month}/#{@dob.year}"
   end
 end
+
+class Directory
+  def initialize(people = [])
+    @people = people
+  end
+end
