@@ -25,4 +25,13 @@ describe Directory do
     list_of_people = [Person.new("Dave", Time.new(1991, 06, 04)), Person.new("Harriet", Time.new(1994, 07, 31))]
     expect(Directory.new(list_of_people)).to be_a_kind_of(Directory)
   end
+
+  describe "#add_person" do
+    it "adds a person to an empty list" do
+      birthdays = Directory.new
+      harriet = Person.new("Harriet", Time.new(1994, 07, 31))
+      birthdays.add_person(harriet)
+      expect(birthdays.people).to include(harriet)
+    end
+  end
 end
