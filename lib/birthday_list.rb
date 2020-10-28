@@ -3,4 +3,8 @@ class Person
     @name = name
     @dob = dob
   end
+
+  def dob
+    return "#{@dob.day}/#{@dob.month}/#{@dob.year}"
+  end
 end
