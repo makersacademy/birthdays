@@ -1,4 +1,6 @@
 require 'birthday_list'
+require 'person'
+require 'directory'
 
 describe Person do
   it "correctly initalises with a name and a date of birth" do
