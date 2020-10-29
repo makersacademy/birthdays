@@ -32,7 +32,7 @@ describe Directory do
     it "adds a person to an empty list" do
       birthdays = Directory.new
       harriet = Person.new("Harriet", Time.new(1994, 07, 31))
-      birthdays.add_person(harriet)
+      birthdays.add_person_to_list(harriet)
       expect(birthdays.people).to include(harriet)
     end
   end
