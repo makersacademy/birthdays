@@ -1,9 +1,9 @@
 class Person
   attr_reader :name
 
-  def initialize(name, dob)
+  def initialize(name, birth_year, birth_month, birth_day)
     @name = name
-    @dob = dob
+    @dob = Date.new(birth_year, birth_month, birth_day)
   end
 
   def dob
