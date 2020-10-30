@@ -1,4 +1,5 @@
-require 'birthday_list'
+require 'birthday'
+require 'stringio'
 
 describe Birthdays do
   describe "#print_header" do
