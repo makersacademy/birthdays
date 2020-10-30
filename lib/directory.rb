@@ -16,4 +16,9 @@ class Directory
     @people.filter { |person| person.dob == "#{target.day}/#{target.month}/#{target.year}"
     }
   end
+
+  def todays_birthdays
+    today = Date.today
+    list_by_date(today.year, today.month, today.day)
+  end
 end
