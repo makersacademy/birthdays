@@ -15,6 +15,5 @@ class Directory
     target = Date.new(year, month, day)
     @people.filter { |person| person.dob == "#{target.day}/#{target.month}/#{target.year}"
     }
-
   end
 end

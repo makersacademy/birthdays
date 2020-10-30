@@ -43,6 +43,24 @@ describe Directory do
       deano = Person.new("James Dean", 1931, 2, 8)
       birthdays = Directory.new([frankie, deano])
       expect(birthdays.list_by_date(1931, 2, 8)).to include(deano)
+      expect(birthdays.list_by_date(1931, 2, 8)).not_to include(frankie)
+
+    end
+  end
+
+  describe "#todays_birthdays" do
+    it "returns people with a birthday of today, ignores others" do
+      today = Date.today
+      newborn = Person.new("Partario", today.year, today.month, today.day)
+      # overengineered solution to create someone not born today
+      # this prevents the 1/365 chance of this test getting weird
+      # because both are born on the same day.
+      other_day = today.day == 1? today.day + 1 : today.day - 1
+      otherborn = Person.new("Basil Jet", today.year, today.month, other_day)
+
+      birthdays = Directory.new([newborn, otherborn])
+      expect(birthdays.todays_birthdays).to include(newborn)
+      expect(birthdays.todays_birthdays).not_to include(otherborn)
     end
   end
 end

@@ -3,10 +3,10 @@ class Person
 
   def initialize(name, birth_year, birth_month, birth_day)
     @name = name
-    @dob = Date.new(birth_year, birth_month, birth_day)
+    @date_of_birth = Date.new(birth_year, birth_month, birth_day)
   end
 
   def dob
-    "#{@dob.day}/#{@dob.month}/#{@dob.year}"
+    "#{@date_of_birth.day}/#{@date_of_birth.month}/#{@date_of_birth.year}"
   end
 end
