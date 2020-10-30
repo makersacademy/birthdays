@@ -42,7 +42,7 @@ describe Directory do
       frankie = Person.new("Frank Sinatra", 1915, 12, 12)
       deano = Person.new("James Dean", 1931, 2, 8)
       birthdays = Directory.new([frankie, deano])
-      expect(birthdays.list_by_date(1931, 2, 8)).to contain(deano)
+      expect(birthdays.list_by_date(1931, 2, 8)).to include(deano)
     end
   end
 end
