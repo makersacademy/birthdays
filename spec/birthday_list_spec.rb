@@ -55,7 +55,7 @@ describe Directory do
       # overengineered solution to create someone not born today
       # this prevents the 1/365 chance of this test getting weird
       # because both are born on the same day.
-      other_day = today.day == 1? today.day + 1 : today.day - 1
+      other_day = today.day == 1 ? today.day + 1 : today.day - 1
       otherborn = Person.new("Basil Jet", today.year, today.month, other_day)
 
       birthdays = Directory.new([newborn, otherborn])
