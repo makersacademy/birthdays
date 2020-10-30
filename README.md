@@ -1,34 +1,28 @@
-### Quick Start
+# Birthdays 🥳
 
-Fork this repository to your github account and clone it to your machine. Then install the dependencies:
+A Ruby command line application that can
+- Store friends’ birthdays and keep track of them.
+- See them all at once with their names and birthdays each on a line in a tidy format
+- Check whose birthday it is today.
+
+## Quick start
 ```bash
-> git clone https://github.com/makersacademy/birthdays.git
+> git clone https://github.com/ehwus/birthdays.git
 > cd birthdays
-> bundle
+> bundle install
+> ruby ./lib/main.rb
 ```
 
-### Instructions
+## Instructions
 
-- Test-drive an implementation of the requirements
-- Make sure your code is [linted](https://github.com/rubocop-hq/rubocop)
-- [Open a PR](https://services.github.com/on-demand/github-cli/open-pull-request-github) when you've finished
+- Follow the prompts to add people to your database or to print the required information out..
 
-### Requirements
+## Techniques Used
 
-I want a program that I can load in IRB that allows me to
-- Store all of my friends’ birthdays so I can keep track of them
-- See them all at once with their names and birthdays each on a line in a tidy format
-- Check whose birthday it is today - the program can check through the birthdays I have stored and check each one to see if it’s someone’s birthday, and tells me something like "It's Mary Poppin's birthday today! They are 124 years old!" - otherwise it won't say anything.
+This was mainly an exercise in Test Driven Development, so I've ensured that all main methods and classes are fully tested in the specifications in ./spec. Use the 'rspec' command to run these yourself.
 
-More requirements:
-- Test-drive extracting a birthday class
-- Isolate your birthday list class using a mock for Birthday
+I have also been learning encapsulation, so I've divided the app into a series of classes:
 
-### TDD resources
-
-- https://github.com/makersacademy/course/blob/master/pills/tdd.md
-- https://github.com/makersacademy/course/blob/master/pills/tdd_quality_discussion.md
-
-### Mocking
-
-- https://relishapp.com/rspec/rspec-mocks/docs/basics/test-doubles
+ - **Person** - the basic object for the exercise, containing variables for both name and date of birth.
+ - **Directory** - a class to store Persons, with some higher level methods like #todays_birthdays to perform operations on the stored Persons.
+ - **Birthday** - the main class for the end user, provides a way for the other classes to be interacted with through stdin/stdout.
