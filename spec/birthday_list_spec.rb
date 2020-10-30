@@ -36,4 +36,13 @@ describe Directory do
       expect(birthdays.people).to include(harriet)
     end
   end
+
+  describe "#birthdays_by_date" do
+    it "lists birthdays on a given date and ignores others" do
+      frankie = Person.new("Frank Sinatra", 1915, 12, 12)
+      deano = Person.new("James Dean", 1931, 2, 8)
+      birthdays = Directory.new([frankie, deano])
+      expect(birthdays.list_by_date(1931, 2, 8)).to contain(deano)
+    end
+  end
 end
