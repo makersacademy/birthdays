@@ -1,5 +1,5 @@
 class Person
-  attr_reader :name
+  attr_reader :name, :date_of_birth
 
   def initialize(name, birth_year, birth_month, birth_day)
     @name = name

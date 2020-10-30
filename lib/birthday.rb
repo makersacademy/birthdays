@@ -46,14 +46,13 @@ class Birthdays
   end
 
   def todays_birthdays
-    p Date.today
-    p @people.todays_birthdays
-
     if @people.todays_birthdays.length.zero?
       puts "No one has a birthday today 😭"
       return
     else
+      p ""
       @people.todays_birthdays.each { |person| puts "It's #{person.name}'s birthday today! 🥳" }
+      p ""
     end
   end
 
