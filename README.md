@@ -11,7 +11,7 @@ Fork this repository to your github account and clone it to your machine. Then i
 
 - Test-drive an implementation of the requirements
 - Make sure your code is [linted](https://github.com/rubocop-hq/rubocop)
-- [Open a PR](https://services.github.com/on-demand/github-cli/open-pull-request-github) when you've finished
+- [Open a PR](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests) when you've finished
 
 ### Requirements
 
