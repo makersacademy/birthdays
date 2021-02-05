@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'birthday_list'
 require 'date'
 
@@ -25,6 +23,16 @@ describe BirthdayList do
   it "checks if today is someone's birthday" do
     subject.add('Bob', '25 May 1991')
     subject.add('Moo', Date.today.strftime('%d %b')+' 1980')
-    expect{subject.check}.to output("It's Moo's birthday today! Moo is 41 years old!\n").to_stdout
+    diff = (Date.today.strftime('%Y').to_i) - 1980
+    expect{subject.check}.to output("It's Moo's birthday today! Moo is #{diff} years old!\n").to_stdout
+  end
+
+  it "doesn't say anything when it's not someone's birthday" do
+    day = Date.today.strftime('%d').to_i + 1
+    if day > 31
+      day = 1
+    end
+    subject.add('Bob', "#{day.to_s} May 1991")
+    expect{subject.check}.to_not output.to_stdout
   end
 end

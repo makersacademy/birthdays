@@ -1,10 +1,12 @@
-# frozen_string_literal: true
+
 require 'date'
 
 class BirthdayList
+
+YEAR = Date.today.strftime('%Y').to_i
+
   def initialize
     @list = []
-    @year =  Date.today.strftime('%Y').to_i
   end
 
   def add(name, date)
@@ -17,15 +19,30 @@ class BirthdayList
     end
   end
 
+
   def check
     @list.each do |x|
-      date = Date.parse(x[1])
-      if date.strftime('%d %b') == Date.today.strftime('%d %b')
-        bdayyear = date.year.to_i
-        diff = @year-bdayyear
-        puts "It's #{x[0]}'s birthday today! #{x[0]} is #{diff} years old!"
+      if today?(x[1])
+        bdayyear = Date.parse(x[1]).strftime('%Y').to_i
+        puts "It's #{x[0]}'s birthday today! #{x[0]} is #{age(bdayyear)} years old!"
       end
     end
+  end
+
+  def today
+    Date.today.strftime('%d %b')
+  end
+
+  def birthday(day)
+    Date.parse(day).strftime('%d %b')
+  end
+
+  def today?(day)
+    today == birthday(day)
+  end
+
+  def age(year)
+    age = YEAR - year
   end
 
 end
