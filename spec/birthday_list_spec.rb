@@ -32,7 +32,7 @@ describe BirthdayList do
     if day > 31
       day = 1
     end
-    subject.add('Bob', "#{day.to_s} May 1991")
+    subject.add('Bob', "#{day} May 1991")
     expect{subject.check}.to_not output.to_stdout
   end
 end

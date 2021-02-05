@@ -42,7 +42,7 @@ YEAR = Date.today.strftime('%Y').to_i
   end
 
   def age(year)
-    age = YEAR - year
+    YEAR - year
   end
 
 end
