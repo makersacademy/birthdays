@@ -4,6 +4,7 @@ require 'date'
 class BirthdayList
   def initialize
     @list = []
+    @year =  Date.today.strftime('%Y').to_i
   end
 
   def add(name, date)
@@ -18,10 +19,13 @@ class BirthdayList
 
   def check
     @list.each do |x|
-      date = Date.parse(x[1].to_s)
-      if date.strftime('%d %b %Y') == Date.today.strftime('%d %b %Y')
-        puts "It's #{x[0]}'s birthday today! #{x[0]} is 100 years old!"
+      date = Date.parse(x[1])
+      if date.strftime('%d %b') == Date.today.strftime('%d %b')
+        bdayyear = date.year.to_i
+        diff = @year-bdayyear
+        puts "It's #{x[0]}'s birthday today! #{x[0]} is #{diff} years old!"
       end
     end
   end
+
 end

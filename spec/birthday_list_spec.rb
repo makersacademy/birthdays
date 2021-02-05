@@ -24,7 +24,7 @@ describe BirthdayList do
 
   it "checks if today is someone's birthday" do
     subject.add('Bob', '25 May 1991')
-    subject.add('Moo', Date.today)
-    expect{subject.check}.to output("It's Moo's birthday today! Moo is 100 years old!\n").to_stdout
+    subject.add('Moo', Date.today.strftime('%d %b')+' 1980')
+    expect{subject.check}.to output("It's Moo's birthday today! Moo is 41 years old!\n").to_stdout
   end
 end
