@@ -29,6 +29,8 @@ YEAR = Date.today.strftime('%Y').to_i
     end
   end
 
+  private
+
   def today
     Date.today.strftime('%d %b')
   end
