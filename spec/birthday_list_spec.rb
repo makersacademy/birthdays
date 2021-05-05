@@ -39,4 +39,26 @@ describe BirthdayList do
       expect { birthday_list.show }.to output("#{name_james}, #{bday_james}\n#{name_maria}, #{bday_maria}\n").to_stdout
     end
   end
+  describe '#check' do
+    context 'checks if today any friend has birthday' do
+      it 'shows message for friend who has birthday today' do
+        Timecop.freeze(Time.parse('05/05/2021'))
+        birthday_list = BirthdayList.new
+        name = 'James'
+        birthday = '05/05/1923'
+
+        birthday_list.add(name, birthday)
+        expect { birthday_list.check }.to output("James's birthday. 98 years old\n").to_stdout
+      end
+      it 'shows nothing when no friend has birthday today' do
+        Timecop.freeze(Time.parse('05/05/2021'))
+        birthday_list = BirthdayList.new
+        name = 'James'
+        birthday = '09/05/1923'
+
+        birthday_list.add(name, birthday)
+        expect { birthday_list.check }.to output("").to_stdout
+      end
+    end
+  end
 end
