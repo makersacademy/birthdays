@@ -1,3 +1,5 @@
+require 'date'
+
 class Birthday
   def initialize
     @birthday = []
@@ -11,6 +13,15 @@ class Birthday
   def show
     @birthday.each do |hash|
       puts "#{hash[:name]}'s birthday is on #{hash[:birthday]}"
+    end
+  end
+
+  def today
+    @birthday.each do |hash|
+      d = Date.parse(hash[:birthday])
+      if Date.today.mon == d.mon && Date.today.mday == d.mday
+        puts "It's #{hash[:name]}'s birthday today! They are #{Date.today.year - d.year} years old!"
+      end
     end
   end
 end
