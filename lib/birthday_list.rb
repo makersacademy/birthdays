@@ -1,10 +1,16 @@
 class Birthday
+  def initialize
+    @birthday = []
+  end
+
   def store(name, birthday)
-    "Birthday stored!"
+    @birthday << {name: name, birthday: birthday}
+    {name: name, birthday: birthday}
   end
 
   def show
-    puts "Andrew's birthday is on 1st January"
-    puts "Ben's birthday is on 2nd January"
+    @birthday.each do |hash|
+      puts "#{hash[:name]}'s birthday is on #{hash[:birthday]}"
+    end
   end
 end
