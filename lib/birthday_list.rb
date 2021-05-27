@@ -16,10 +16,18 @@ class Birthday
 
   def today
     @birthday.each do |hash|
-      d = Date.parse(hash[:birthday])
-      if Date.today.mon == d.mon && Date.today.mday == d.mday
-        puts "It's #{hash[:name]}'s birthday today! They are #{Date.today.year - d.year} years old!"
-      end
+      puts "It's #{hash[:name]}'s birthday today! They are #{age(hash[:birthday])} years old!" if today?(hash[:birthday])
     end
   end
+
+  private
+
+  def age(date) # date is a string
+    Date.today.year - Date.parse(date).year
+  end
+
+  def today?(date) # returns true if date matches today, otherwise false. 
+    Date.today.mon == Date.parse(date).mon && Date.today.mday == Date.parse(date).mday
+  end
+
 end
