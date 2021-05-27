@@ -11,9 +11,7 @@ class Birthday
   end
 
   def show
-    @birthday.each do |hash|
-      puts "#{hash[:name]}'s birthday is on #{hash[:birthday]}"
-    end
+    @birthday.each { |hash| puts "#{hash[:name]}'s birthday is on #{hash[:birthday]}" }
   end
 
   def today
