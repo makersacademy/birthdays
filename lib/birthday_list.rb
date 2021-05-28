@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 require 'date'
 
+# A birthday list class
 class Birthday
   def initialize
     @birthday = []
   end
 
   def store(name, birthday)
-    @birthday << {name: name, birthday: birthday}
-    {name: name, birthday: birthday}
+    @birthday << { name: name, birthday: birthday }
+    { name: name, birthday: birthday }
   end
 
   def show
@@ -16,18 +19,21 @@ class Birthday
 
   def today
     @birthday.each do |hash|
-      puts "It's #{hash[:name]}'s birthday today! They are #{age(hash[:birthday])} years old!" if today?(hash[:birthday])
+      if today?(hash[:birthday])
+        puts "It's #{hash[:name]}'s birthday today! They are #{age(hash[:birthday])} years old!"
+      end
     end
   end
 
   private
 
-  def age(date) # date is a string
+  # date is a string
+  def age(date)
     Date.today.year - Date.parse(date).year
   end
 
-  def today?(date) # returns true if date matches today, otherwise false. 
+  # returns true if date matches today, otherwise false.
+  def today?(date)
     Date.today.mon == Date.parse(date).mon && Date.today.mday == Date.parse(date).mday
   end
-
 end
