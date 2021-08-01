@@ -14,10 +14,7 @@ describe BirthdayList do
     subject.add new_birthday1
     subject.add new_birthday2
 
-    expect(subject.list).to eq({
-      Date.today => ['Birthday Girl'],
-      Date.today.next_day => ['Birthday Boy']
-    })
+    expect(subject.list).to eq([new_birthday1, new_birthday2])
   end
 
   it 'should be able to add birthdays' do
@@ -28,7 +25,7 @@ describe BirthdayList do
 
     subject.add new_birthday
 
-    expect(subject.list).to eq({ new_birthday.date => [new_birthday.name] })
+    expect(subject.list).to eq([new_birthday])
   end
 
   it "should show today's birthdays" do
