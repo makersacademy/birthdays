@@ -1,9 +1,23 @@
 require 'birthday_list'
-require 'date'
 
 describe BirthdayList do
   it 'should return a list of birthdays' do
-    expect(subject.list).to be_instance_of(Hash)
+    new_birthday1 = double('Birthday')
+    new_birthday2 = double('Birthday')
+
+    allow(new_birthday1).to receive(:name) { 'Birthday Girl' }
+    allow(new_birthday1).to receive(:date) { Date.today }
+    
+    allow(new_birthday2).to receive(:name) { 'Birthday Boy' }
+    allow(new_birthday2).to receive(:date) { Date.today.next_day }
+
+    subject.add new_birthday1
+    subject.add new_birthday2
+
+    expect(subject.list).to eq({
+      Date.today => ['Birthday Girl'],
+      Date.today.next_day => ['Birthday Boy']
+    })
   end
 
   it 'should be able to add birthdays' do
