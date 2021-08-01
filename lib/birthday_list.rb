@@ -1,12 +1,29 @@
 class BirthdayList
-  attr_reader :all
+  attr_reader :list
 
   def initialize
-    @all = Hash.new { |h, k| h[k] = [] }
+    @list = Hash.new { |h, k| h[k] = [] }
   end
   
   def add birthday
-    @all[birthday.date] << birthday.name
-    return "Added birthday for #{birthday.name}"
+    @list[birthday.date] << birthday.name
+    "Added birthday for #{birthday.name}"
+  end
+
+  def today
+    todays = @list.select do |k, v|
+      k.month == Date.today.month && k.day == Date.today.day
+    end
+
+    str = "Today's Birthdays:\n"
+
+    todays.each_pair do |birthday, names|
+      names.each do |name|
+        age = Date.today.year - birthday.year
+        str = str + "#{name} is #{age} today!\n"
+      end
+    end
+
+    str.chomp
   end
 end
