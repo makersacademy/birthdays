@@ -1,8 +1,6 @@
 require 'date'
 
 class BirthdayList
-  attr_reader :list
-
   def initialize
     @list = []
   end
@@ -10,6 +8,14 @@ class BirthdayList
   def add birthday
     @list << birthday
     "Added birthday for #{birthday.name}"
+  end
+
+  def list
+    str = "All Birthdays\n\n"
+
+    @list.each { |bdy| str << "#{bdy.name} - #{bdy.date.strftime("%B %d, %Y")}\n"}
+
+    str.chomp
   end
 
   def today
