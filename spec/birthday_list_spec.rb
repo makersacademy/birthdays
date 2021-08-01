@@ -2,53 +2,49 @@ require 'birthday_list'
 
 describe BirthdayList do
   it 'should return an attractive list of birthdays' do
-    birthday1 = double('Birthday')
-    birthday2 = double('Birthday')
+    bd1, bd2 = double('Birthday'), double('Birthday')
 
-    allow(birthday1).to receive(:name) { 'Alice' }
-    allow(birthday1).to receive(:date) { Date.today }
+    allow(bd1).to receive(:name) { 'Alice' }
+    allow(bd1).to receive(:date) { Date.today }
     
-    allow(birthday2).to receive(:name) { 'Bob' }
-    allow(birthday2).to receive(:date) { Date.today.next_day }
+    allow(bd2).to receive(:name) { 'Bob' }
+    allow(bd2).to receive(:date) { Date.today.next_day }
 
-    subject.add birthday1
-    subject.add birthday2
+    [bd1, bd2].each { |bd| subject.add bd }
 
     str = [
       "All Birthdays\n",
-      "Alice - #{birthday1.date.strftime("%B %d, %Y")}",
-      "Bob - #{birthday2.date.strftime("%B %d, %Y")}"
+      "Alice - #{bd1.date.strftime("%B %d, %Y")}",
+      "Bob - #{bd2.date.strftime("%B %d, %Y")}"
     ].join("\n")
 
     expect(subject.list).to eq(str)
   end
 
   it 'should be able to add birthdays' do
-    birthday = double('Birthday')
+    bd = double('Birthday')
 
-    allow(birthday).to receive(:name) { 'Victoria' }
-    allow(birthday).to receive(:date) { Date.new(1982, 6, 3) }
+    allow(bd).to receive(:name) { 'Victoria' }
+    allow(bd).to receive(:date) { Date.new(1982, 6, 3) }
 
-    subject.add birthday
+    subject.add bd
 
-    expect(subject.list)
-    .to eq("All Birthdays\n\nVictoria - June 03, 1982")
+    expect(subject.list).to eq("All Birthdays\n\nVictoria - June 03, 1982")
   end
 
   it "should show today's birthdays" do
-    birthday1 = double('Birthday')
-    birthday2 = double('Birthday')
+    bd1, bd2 = double('Birthday'), double('Birthday')
 
-    allow(birthday1).to receive(:name) { 'Alice' }
-    allow(birthday1).to receive(:date) { Date.today }
+    allow(bd1).to receive(:name) { 'Alice' }
+    allow(bd1).to receive(:date) { Date.today }
 
-    allow(birthday2).to receive(:name) { 'Bob' }
-    allow(birthday2).to receive(:date) { Date.today.prev_year }
+    allow(bd2).to receive(:name) { 'Bob' }
+    allow(bd2).to receive(:date) { Date.today.prev_year }
 
-    subject.add birthday1
-    subject.add birthday2
+    [bd1, bd2].each { |bd| subject.add bd }
 
     str = "Today's Birthdays:\nAlice is 0 today!\nBob is 1 today!"
+
     expect(subject.today).to eq(str)
   end
 end

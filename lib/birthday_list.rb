@@ -13,16 +13,16 @@ class BirthdayList
   def list
     str = "All Birthdays\n\n"
 
-    @list.each { |bdy| str << "#{bdy.name} - #{bdy.date.strftime("%B %d, %Y")}\n"}
+    @list.each { |bd| str << "#{bd.name} - #{bd.date.strftime("%B %d, %Y")}\n" }
 
     str.chomp
   end
 
   def today
     str = "Today's Birthdays:\n"
-    todays = @list.select { |bdy| same_date(Date.today, bdy.date) }
+    todays = @list.select { |bd| same_date(Date.today, bd.date) }
 
-    todays.each { |bdy| str << "#{bdy.name} is #{age(bdy.date)} today!\n" }
+    todays.each { |bd| str << "#{bd.name} is #{age(bd.date)} today!\n" }
 
     str.chomp
   end
