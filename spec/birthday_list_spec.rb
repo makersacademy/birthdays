@@ -15,10 +15,10 @@ describe BirthdayList do
     str = [
       "All Birthdays\n",
       "Alice - #{bd1.date.strftime("%B %d, %Y")}",
-      "Bob - #{bd2.date.strftime("%B %d, %Y")}"
+      "Bob - #{bd2.date.strftime("%B %d, %Y")}\n"
     ].join("\n")
 
-    expect(subject.list).to eq(str)
+    expect(subject.show_all).to eq(str)
   end
 
   it 'should be able to add birthdays' do
@@ -29,7 +29,7 @@ describe BirthdayList do
 
     subject.add bd
 
-    expect(subject.list).to eq("All Birthdays\n\nVictoria - June 03, 1982")
+    expect(subject.list).to eq([bd])
   end
 
   it "should show today's birthdays" do
@@ -43,8 +43,8 @@ describe BirthdayList do
 
     [bd1, bd2].each { |bd| subject.add bd }
 
-    str = "Today's Birthdays:\nAlice is 0 today!\nBob is 1 today!"
+    str = "Today's Birthdays\n\nAlice is 0 today!\nBob is 1 today!\n"
 
-    expect(subject.today).to eq(str)
+    expect(subject.show_today).to eq(str)
   end
 end

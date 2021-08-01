@@ -1,6 +1,8 @@
 require 'date'
 
 class BirthdayList
+  attr_reader :list
+
   def initialize
     @list = []
   end
@@ -10,21 +12,23 @@ class BirthdayList
     "Added birthday for #{birthday.name}"
   end
 
-  def list
+  def show_all
     str = "All Birthdays\n\n"
 
     @list.each { |bd| str << "#{bd.name} - #{bd.date.strftime("%B %d, %Y")}\n" }
 
-    str.chomp
+    puts str
+    str
   end
 
-  def today
-    str = "Today's Birthdays:\n"
+  def show_today
+    str = "Today's Birthdays\n\n"
     todays = @list.select { |bd| same_date(Date.today, bd.date) }
 
     todays.each { |bd| str << "#{bd.name} is #{age(bd.date)} today!\n" }
 
-    str.chomp
+    puts str
+    str
   end
 
   private
