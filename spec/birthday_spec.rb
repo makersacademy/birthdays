@@ -1,4 +1,3 @@
-require 'birthday_list'
 require 'birthday'
 
 describe Birthday do

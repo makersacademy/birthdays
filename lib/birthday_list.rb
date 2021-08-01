@@ -1,4 +1,4 @@
-require 'date'
+require 'birthday'
 
 class BirthdayList
   attr_reader :list
