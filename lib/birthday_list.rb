@@ -13,17 +13,21 @@ class BirthdayList
   end
 
   def today
-    todays = @list.select do |birthday|
-      birthday.date.month == Date.today.month && birthday.date.day == Date.today.day
-    end
-
     str = "Today's Birthdays:\n"
+    todays = @list.select { |bdy| same_date(Date.today, bdy.date) }
 
-    todays.each do |birthday|
-      age = Date.today.year - birthday.date.year
-      str = str + "#{birthday.name} is #{age} today!\n"
-    end
+    todays.each { |bdy| str << "#{bdy.name} is #{age(bdy.date)} today!\n" }
 
     str.chomp
+  end
+
+  private
+
+  def same_date(date1, date2)
+    date1.month == date2.month && date1.day == date2.day
+  end
+
+  def age date
+    Date.today.year - date.year
   end
 end
