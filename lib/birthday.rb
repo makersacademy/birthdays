@@ -9,7 +9,7 @@ class Birthday
   def calculate_age
     age = today.year - dob_year
     age -= 1 if today.month < dob_month || (today.month == dob_month && today.day < dob_day)
-    return age
+    age
   end
 
   private
@@ -19,14 +19,14 @@ class Birthday
   end
 
   def dob_day
-    @date.split("/")[0].to_i
+    @date.split('/')[0].to_i
   end
 
   def dob_month
-    @date.split("/")[1].to_i
+    @date.split('/')[1].to_i
   end
 
   def dob_year
-    @date.split("/")[2].to_i
+    @date.split('/')[2].to_i
   end
 end

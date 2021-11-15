@@ -23,8 +23,8 @@ describe BirthdayList do
   end
 
   it 'checks if a birthday is today and returns a message' do
-    allow(my_birthday).to receive_messages(name: 'Lilly', date: Time.now.strftime("%d/%m/1989"), age: '32')
+    allow(my_birthday).to receive_messages(name: 'Lilly', date: Time.now.strftime('%d/%m/1989'), calculate_age: '32')
     birthday_list.store_birthday(my_birthday)
-    expect { birthday_list.check_birthday }.to output("It's #{my_birthday.name}'s birthday today! They are #{my_birthday.age} years old!\n").to_stdout
+    expect { birthday_list.check_birthday }.to output("It's #{my_birthday.name}'s birthday today! They are #{my_birthday.calculate_age} years old!\n").to_stdout
   end
 end

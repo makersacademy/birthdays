@@ -1,5 +1,3 @@
-require 'birthday'
-
 class BirthdayList
   attr_reader :birthdays
 
@@ -18,7 +16,7 @@ class BirthdayList
   def check_birthday
     @birthdays.each do |birthday|
       if today == birthday.date[0..4]
-        puts "It's #{birthday.name}'s birthday today! They are #{birthday.age} years old!"
+        puts "It's #{birthday.name}'s birthday today! They are #{birthday.calculate_age} years old!"
       end
     end
   end
