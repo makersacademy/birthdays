@@ -5,7 +5,7 @@ class BirthdayList
     @birthdays = []
   end
 
-  def store_birthday(birthday = Birthday.new)
+  def store_birthday(birthday)
     @birthdays << birthday
   end
 
