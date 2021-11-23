@@ -23,6 +23,18 @@ describe BirthdayList do
 		subject.store_birthday(friend)
 		expect(subject.birthdays.size).to eq 1
 	end
+
+	context "birthday_today?"
+	it 'has a #birthday_today? method' do
+		expect(subject).to respond_to(:birthday_today?)
+	end
+
+	context "Checks today's birthdays"
+	it "iterates through birthdays arrays and displays today's birthday" do
+		friend2 = double(:friend, name: "Joey", birthday: "23/11/1981")
+		subject.store_birthday(friend2) 
+		expect(subject.birthday_today?).to eq "It's Joey's birthday today! They are 40 years old!"
+	end
 	
 
 end
