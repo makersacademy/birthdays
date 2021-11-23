@@ -8,4 +8,6 @@ describe BirthdayList do
 		expect(subject).to be_an_instance_of(BirthdayList)
 	end
 
+	
+
 end
