@@ -1,5 +1,8 @@
 class BirthdayList
 
+  MONTHS = ["unknown", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+
   def initialize
     @birthdays = []
   end
@@ -9,7 +12,11 @@ class BirthdayList
   end
 
   def show_birthdays
-    @birthdays
+    @birthdays.each { |person| print "#{person.name}'s birthday is #{month_text(person.month)} #{person.day}, #{person.year}"}
+  end
+
+  def month_text(month)
+    MONTHS[month]
   end
 
 end
