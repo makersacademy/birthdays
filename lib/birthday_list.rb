@@ -21,4 +21,9 @@ class BirthdayList
     MONTHS[month]
   end
 
+  def todays_birthday
+    today = @birthdays.select { |person| person.day == Date.today.day && person.month == Date.today.month}
+    today.each { |person| puts "It's #{person.name}'s birthday today! They are #{person.calculate_age} years old!" }
+  end
+
 end
