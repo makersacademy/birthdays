@@ -1,19 +1,13 @@
-### Quick Start
+# Birthday List
 
-Fork this repository to your github account and clone it to your machine. Then install the dependencies:
-```bash
-> git clone https://github.com/makersacademy/birthdays.git
-> cd birthdays
-> bundle
-```
+## Overview
 
-### Instructions
+- I completed this challenge as part of my self learning during my time at Makers bootcamp.
+- I implemented a program that can store birthdays and provide information about the stored birthdays to meet the below requirement.
+- My program was written in Ruby in line with the principles of Test-Driven Development.
+- When testing the `BirthdayList` class, I used doubles for the `Birthday` class in order to isolate classes.
 
-- Test-drive an implementation of the requirements
-- Make sure your code is [linted](https://github.com/rubocop-hq/rubocop)
-- [Open a PR](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests) when you've finished
-
-### Requirements
+## Requirements
 
 I want a program that I can load in IRB that allows me to
 - Store all of my friends’ birthdays so I can keep track of them
@@ -24,11 +18,102 @@ More requirements:
 - Test-drive extracting a birthday class
 - Isolate your birthday list class using a mock for Birthday
 
-### TDD resources
+## Approach
 
-- https://github.com/makersacademy/course/blob/master/pills/tdd.md
-- https://github.com/makersacademy/course/blob/master/pills/tdd_quality_discussion.md
+- This program is implemented using two classes: `Birthday` and `BirthdayList`.
 
-### Mocking
+### **Birthday Class**
 
-- https://relishapp.com/rspec/rspec-mocks/docs/basics/test-doubles
+**Dependencies**
+
+```
+require "date"
+```
+
+**Initialization**
+
+```
+  attr_reader :name, :day, :month, :year
+
+  def initialize(name, day, month, year)
+    @name = name
+    @day = day
+    @month = month
+    @year = year
+  end
+```
+
+Class is initialized with name, day, month, year arguments. An attribute reader is used to allow access to these variables in other methods.
+
+**Calculate age**
+
+```
+  def calculate_age
+    birthday = Date.parse("#{@day}/#{month}/#{year}")
+    age_in_days = (Date.today - birthday).to_i
+    age_in_days / 365
+  end
+```
+
+Uses the external "date" class to compare the person's age to the current date to calculate age.
+
+****
+
+### **BirthdayList Class**
+
+**Dependencies**
+
+```
+require_relative "birthday"
+```
+
+**Initialization**
+
+```
+  def initialize
+    @birthdays = []
+  end
+```
+
+Starts with empty list.
+
+**Add birthday**
+
+```
+  def add_birthday(birthday)
+    @birthdays << birthday
+  end
+```
+Adds birthday to the list of birthdays.
+
+**Month to text**
+
+```
+  MONTHS = ["unknown", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+  def month_text(month)
+    MONTHS[month]
+  end
+```
+Converts a numerical month into a string month using the MONTHS constant. For example, if the user enters 5, it will return "May".
+
+**Show birthdays**
+
+```
+  def show_birthdays
+    @birthdays.each { |person| puts "#{person.name}'s birthday is #{month_text(person.month)} #{person.day}, #{person.year}" }
+  end
+```
+Shows all birthdays in the list in a tiday format, e.g. "Kim's birthday is May 13, 1991"
+
+**Today's birthday**
+```
+  def todays_birthday
+    today = @birthdays.select { |person| person.day == Date.today.day && person.month == Date.today.month }
+    today.each { |person| puts "It's #{person.name}'s birthday today! They are #{person.calculate_age} years old!" }
+  end
+```
+
+Shows all people in the birthday list whose birthday it is today, in the format "It's Mary Poppin's birthday today! They are 124 years old!"
+
+
