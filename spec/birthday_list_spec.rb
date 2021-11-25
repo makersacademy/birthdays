@@ -2,17 +2,12 @@ require "birthday_list"
 require "date"
 
 describe BirthdayList do
-  let(:birthday) {double :birthday, :name => "Kim", :day => 13, :month => 5, :year => 1991}
-  let(:birthday2) {double :birthday2, :name => "Yoneya", :day => 1, :month => 1, :year => 1990}
-  let(:birthday_girl) {double :birthday_girl, :name => "Bday Gal", :day => (Date.today.day), :month => (Date.today.month), :year => (Date.today.year - 25)}
+  let(:birthday) { double :birthday, :name => "Kim", :day => 13, :month => 5, :year => 1991 }
+  let(:birthday2) { double :birthday2, :name => "Yoneya", :day => 1, :month => 1, :year => 1990 }
+  let(:birthday_girl) { double :birthday_girl, :name => "Bday Gal", :day => (Date.today.day), :month => (Date.today.month), :year => (Date.today.year - 25) }
 
   it "should be able to store a birthday" do
     expect(subject.add_birthday(birthday)).to match_array [birthday]
-  end
-
-  xit "should be able to show stored birthday" do
-    subject.add_birthday(birthday)
-    expect(subject.show_birthdays).to match_array [birthday]
   end
 
   it "should be able to add multiple birthdays" do
