@@ -26,18 +26,14 @@ describe Birthday do
 
   end
 
-  it "should store months in a textual format" do
-    expect(Birthday::MONTHS).to match_array(["unknown", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
-  end
+
 
   context "Birthday initialized" do
     before do
       @birthday = Birthday.new("Kim", 13, 5, 1991)
     end
 
-    it "should be able to generate a textual month from a numerical value" do
-      expect(@birthday.month_text(5)).to eq "May"
-    end
+
 
     it "should be able to calculate an age" do
       expect(@birthday.calculate_age).to eq 30
