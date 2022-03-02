@@ -9,6 +9,8 @@
   # returns a formatted string of name and age
     # needs to calculate age
 
+# Birthday itself should be a separate class - include methods based on the above requirements
+
 class BirthdayList
   attr_reader :birthdays
   
