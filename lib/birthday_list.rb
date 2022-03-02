@@ -9,20 +9,44 @@
   # returns a formatted string of name and age
     # needs to calculate age
 
-# Birthday itself should be a separate class - include methods based on the above requirements
-
 class BirthdayList
-  attr_reader :birthdays
-  
   def initialize
     @birthdays = []
+  end
+
+  def size
+    @birthdays.count
   end
 
   def add(birthday)
     @birthdays << birthday
   end
 
+  def birthday_check(today)
+    @birthdays.each do |birthday|
+      print_reminder(birthday) if birthday.birthday_today?(today)
+    end
+  end
+
   def print_all_birthdays
-    puts @birthdays
+    @birthdays.each do |birthday|
+      puts "#{birthday.name} - #{friendly_date(birthday.birthdate)}"
+    end
+  end
+
+  private
+
+  def friendly_date(date)
+    "#{pad_number(date.day)}/#{pad_number(date.month)}"
+  end
+
+  def pad_number(number)
+    number.to_s.rjust(2, '0')
+  end
+
+  def print_reminder(birthday)
+    output = "It is #{birthday.name}'s birthday today!"\
+            " They are #{birthday.age} years old!"
+    puts output
   end
 end
