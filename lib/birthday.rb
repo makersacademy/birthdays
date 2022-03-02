@@ -1,9 +1,32 @@
-# Birthday should store a name and a birthdate
-# it should have a method #age that returns the number of full years since birthdate
-  # will require a date object to be passed
-  # or ability to make a new Date.today -> dependency
-
 class Birthday
-  def initialize(name = "Unknown")
+  attr_reader :name
+
+  def initialize(name = "Unknown", birthdate = "Unknown")
+    @name = name
+    @birthdate = birthdate
+  end
+
+  def birthdate
+    @birthdate.to_s
+  end
+
+  def age(today)
+    days_old = (today - @birthdate).to_i
+    days_old / 365
+  end
+
+  def birthday_today?(today)
+    @today = today
+    same_month? && same_day?
+  end
+
+  private
+
+  def same_month?
+    @today.month === @birthdate.month
+  end
+
+  def same_day?
+    @today.day === @birthdate.day
   end
 end
