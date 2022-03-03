@@ -18,7 +18,7 @@ describe Birthday do
 
   describe '#birthdate' do
     it 'returns the stored birthdate' do
-      expect(birthday.birthdate).to eq("1899-08-09")
+      expect(birthday.birthdate).to eq(date)
     end
 
     it 'defaults to "Unknown"' do
@@ -28,17 +28,25 @@ describe Birthday do
 
   describe '#age' do
     it 'calculates the age today' do
-      expect(birthday.age(Date.today)).to eq 122
+      expect(birthday.age(Date.new(2022,3,2))).to eq 122
+    end
+
+    it 'calculates the age on a given day' do
+      expect(birthday.age(Date.new(1949,10,15))).to eq 50
     end
   end
 
   describe '#birthday_today?' do
-    it 'returns true if today is the birthday' do
-      birthday_today = Birthday.new("Mr Today", Date.today)
-      expect(birthday_today.birthday_today?(Date.today)).to be true
+    context 'birthday is today' do
+      it 'returns true' do
+        birthday_today = Birthday.new("Mr Today", Date.today)
+        expect(birthday_today.birthday_today?(Date.today)).to be true
+      end
     end
-    it 'returns false if today is not the birthday' do
-      expect(birthday.birthday_today?(Date.today)).to be false
+    context 'birthday is not today' do
+      it 'returns false' do
+        expect(birthday.birthday_today?(Date.today)).to be false
+      end
     end
   end
 end

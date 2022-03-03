@@ -1,12 +1,12 @@
 class Birthday
-  attr_reader :name
+  attr_reader :name, :birthdate
 
   def initialize(name = "Unknown", birthdate = "Unknown")
     @name = name
     @birthdate = birthdate
   end
 
-  def birthdate
+  def print_birthdate
     @birthdate.to_s
   end
 
