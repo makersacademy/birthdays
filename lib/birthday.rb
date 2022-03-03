@@ -6,10 +6,6 @@ class Birthday
     @birthdate = birthdate
   end
 
-  def print_birthdate
-    @birthdate.to_s
-  end
-
   def age(today)
     days_old = (today - @birthdate).to_i
     days_old / 365
