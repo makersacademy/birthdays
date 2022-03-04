@@ -1,7 +1,7 @@
 require 'date'
 
 class BirthdayList
-  DATE_FORMAT = '%m-%d'
+  DATE_FORMAT = '%m-%d'.freeze
 
   def initialize
     @list = []

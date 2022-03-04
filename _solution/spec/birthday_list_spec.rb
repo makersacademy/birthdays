@@ -29,22 +29,22 @@ RSpec.describe BirthdayList do
 
    # Check who’s birthday it is today
 
-   it 'checks birthdays for a birthday today' do
-     Timecop.freeze(Time.parse('1 October 2018')) do
+  it 'checks birthdays for a birthday today' do
+    Timecop.freeze(Time.parse('1 October 2018')) do
 
-       birthday_list = BirthdayList.new
-       birthday_list.add('Guy Fawkes', "13 April 1570")
-       birthday_list.add('Julie Andrews', "1 October 1935")
+      birthday_list = BirthdayList.new
+      birthday_list.add('Guy Fawkes', "13 April 1570")
+      birthday_list.add('Julie Andrews', "1 October 1935")
 
-       expect { birthday_list.check }.to output("It's Julie Andrews's birthday today! They are 83 years old!\n").to_stdout
-     end
-   end
+      expect { birthday_list.check }.to output("It's Julie Andrews's birthday today! They are 83 years old!\n").to_stdout
+    end
+  end
 
-   it 'checks birthdays for a birthday - but there are none' do
-     birthday_list = BirthdayList.new
-     birthday_list.add('Guy Fawkes', "13 April 1570")
-     birthday_list.add('Julie Andrews', "1 October 1935")
+  it 'checks birthdays for a birthday - but there are none' do
+    birthday_list = BirthdayList.new
+    birthday_list.add('Guy Fawkes', "13 April 1570")
+    birthday_list.add('Julie Andrews', "1 October 1935")
 
-     expect { birthday_list.check }.not_to output().to_stdout
-   end
+    expect { birthday_list.check }.not_to output().to_stdout
+  end
 end
